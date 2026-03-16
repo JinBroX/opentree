@@ -27,20 +27,38 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ---- Scroll reveal ----
-  const observer = new IntersectionObserver((entries) => {
+  const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+        revealObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.06, rootMargin: '0px 0px -50px 0px' });
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  function observeReveal(el) {
+    revealObserver.observe(el);
+  }
+  window.observeReveal = observeReveal;
+
+  document.querySelectorAll('.reveal, .reveal-left').forEach(el => revealObserver.observe(el));
 
   // ---- Cart controls ----
   document.getElementById('cartBtn')?.addEventListener('click', openCart);
   document.getElementById('cartClose')?.addEventListener('click', closeCart);
   document.getElementById('cartOverlay')?.addEventListener('click', closeCart);
+
+  // ---- Sync lang-toggle button states ----
+  document.addEventListener('langChanged', (e) => {
+    const lang = e.detail?.lang || currentLang;
+    // New style: lang-toggle buttons (no data-lang class, just onclick)
+    document.querySelectorAll('.lang-toggle button, .footer-lang button').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+    // Legacy: lang-btn
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+  });
 
 });

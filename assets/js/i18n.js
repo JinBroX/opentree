@@ -12,20 +12,69 @@ const I18N = {
 
     // Hero
     hero_eyebrow: "Eastern Ritual Wellness",
-    hero_title_1: "Ancient Energy",
-    hero_title_2: "for Modern Life",
+    hero_deco: "氣",
+    hero_title_1: "Ancient",
+    hero_title_2: "Energy",
     hero_subtitle: "Rooted in millennia of Eastern philosophy, OpenTree brings the healing power of agarwood tea, Bian stone and sacred energy rituals into your daily practice.",
+    hero_copy: "Rooted in millennia of Eastern philosophy — agarwood, Bian stone, and sacred ritual for the modern seeker.",
     hero_cta_primary: "Explore Collection",
     hero_cta_secondary: "Our Story",
+    hero_cta_1: "Explore Collection",
+    hero_cta_2: "Our Story",
     stat_1_num: "500+",
     stat_1_label: "Years of Tradition",
     stat_2_num: "12K+",
     stat_2_label: "Happy Seekers",
     stat_3_num: "100%",
     stat_3_label: "Natural Sourced",
+    stat_1: "Years of Tradition",
+    stat_2: "Happy Seekers",
+    stat_3: "Natural Sourced",
 
     // Marquee
     marquee: ["Agarwood · 沉香", "Bian Stone · 砭石", "Energy Ritual · 能量仪式", "Eastern Wellness · 东方养生", "Sacred Ritual · 神圣仪式", "Natural Healing · 自然疗愈"],
+
+    // Intro
+    intro_label: "The OpenTree Way",
+    intro_headline_1: "Where Ancient",
+    intro_headline_2: "Wisdom Flows",
+    intro_text: "OpenTree was born from a belief that Eastern tradition holds the most profound keys to modern wellbeing. Each product carries an intention — a fragment of five-thousand-year wisdom made tangible for contemporary life.",
+    intro_cta: "Learn Our Philosophy",
+
+    // Craft
+    craft_label: "The Craft",
+    craft_title: "Made with\nintention",
+    craft_cta: "Shop Now",
+    craft_1_title: "Sacred Agarwood Tea",
+    craft_1_text: "Hand-selected agarwood leaves, slow-dried to preserve the full spectrum of natural energy compounds.",
+    craft_2_title: "Bian Stone Bracelet",
+    craft_2_text: "Authentic Si Bin Bian stone, hand-polished by skilled artisans — each bead unique as the energy it carries.",
+    craft_3_title: "Crystal Energy Bracelet",
+    craft_3_text: "Natural crystal beads aligned by their energetic properties, strung with intention for daily wear.",
+    craft_4_title: "The Daily Ritual",
+    craft_4_text: "Begin each morning with intention — a cup of agarwood tea and a moment of stillness with your energy stones.",
+
+    // Quotes
+    quotes_label: "From Our Community",
+    quote_1: "The Sacred Tea has transformed my mornings. There is a stillness that arrives with the first cup that I have not found anywhere else.",
+    quote_1_author: "Sarah M. — New York",
+    quote_2: "My Bian stone bracelet feels alive on my wrist. I notice a warmth and a centering energy that grounds me through the day.",
+    quote_2_author: "James L. — London",
+    quote_3: "OpenTree products carry an intention that you can feel. This is not wellness theatre — it is genuine Eastern wisdom made accessible.",
+    quote_3_author: "Aiko T. — Tokyo",
+
+    // Energy section
+    energy_h_1: "Feel the Energy",
+    energy_h_2: "That Has Always\nBeen Within You",
+    energy_copy: "Eastern tradition teaches that energy — Qi — flows through all living things. Our products are crafted to help you attune to that flow, reconnect with nature, and awaken the ancient energy within.",
+
+    // Footer
+    footer_copy_text: "Eastern Ritual Wellness — ancient energy for modern life.",
+    footer_nav: "Navigate",
+    footer_cr: "© 2026 OpenTree. All rights reserved.",
+
+    // Add to cart
+    add_to_cart: "Add to Bag →",
 
     // Philosophy
     philosophy_label: "The OpenTree Way",
@@ -170,20 +219,69 @@ const I18N = {
 
     // Hero
     hero_eyebrow: "东方能量生活方式",
-    hero_title_1: "东方古老能量",
-    hero_title_2: "融入现代生活",
+    hero_deco: "氣",
+    hero_title_1: "东方古老",
+    hero_title_2: "能量",
     hero_subtitle: "OpenTree 深植东方哲学数千年智慧，将沉香茶、砭石能量与神圣仪式带入你的日常修行，唤醒身体深处的自然能量。",
+    hero_copy: "源自东方哲学的千年智慧——沉香、砭石与神圣仪式，为现代探寻者而生。",
     hero_cta_primary: "探索系列",
     hero_cta_secondary: "了解我们",
+    hero_cta_1: "探索系列",
+    hero_cta_2: "了解我们",
     stat_1_num: "500+",
     stat_1_label: "年东方传统",
     stat_2_num: "12K+",
     stat_2_label: "能量探寻者",
     stat_3_num: "100%",
     stat_3_label: "天然原料",
+    stat_1: "年东方传统",
+    stat_2: "能量探寻者",
+    stat_3: "天然原料",
 
     // Marquee
     marquee: ["Agarwood · 沉香", "Bian Stone · 砭石", "Energy Ritual · 能量仪式", "Eastern Wellness · 东方养生", "Sacred Ritual · 神圣仪式", "Natural Healing · 自然疗愈"],
+
+    // Intro (CN)
+    intro_label: "OpenTree 之道",
+    intro_headline_1: "古老智慧",
+    intro_headline_2: "自然流淌",
+    intro_text: "OpenTree 诞生于一个信念——东方传统拥有现代身心健康最深刻的答案。每件产品承载着一份用心，是五千年智慧凝结成当代生活可触及的存在。",
+    intro_cta: "了解我们的理念",
+
+    // Craft (CN)
+    craft_label: "工艺之道",
+    craft_title: "用心而造",
+    craft_cta: "立即购物",
+    craft_1_title: "神圣沉香茶",
+    craft_1_text: "精选沉香叶，慢火烘干以保留完整天然能量成分的全光谱。",
+    craft_2_title: "砭石手串",
+    craft_2_text: "正宗泗滨砭石，由工匠手工打磨——每颗珠子都如其蕴含的能量般独一无二。",
+    craft_3_title: "水晶能量手串",
+    craft_3_text: "天然水晶珠按能量属性精心搭配，以用心穿串，适合日常佩戴。",
+    craft_4_title: "每日仪式",
+    craft_4_text: "以用心开启每个清晨——一杯沉香茶，与能量石共度静谧时刻。",
+
+    // Quotes (CN)
+    quotes_label: "来自我们的社群",
+    quote_1: "神圣沉香茶改变了我的每个清晨。第一口带来的宁静，是我在其他任何地方都未曾感受过的。",
+    quote_1_author: "Sarah M. — 纽约",
+    quote_2: "我的砭石手串仿佛有生命一般。我感受到手腕上的温热与沉稳，整天都被一种归中的能量包围着。",
+    quote_2_author: "James L. — 伦敦",
+    quote_3: "OpenTree 的产品承载着一种你能切实感受到的用心。这不是wellness表演——而是触手可及的真实东方智慧。",
+    quote_3_author: "Aiko T. — 东京",
+
+    // Energy (CN)
+    energy_h_1: "感受那能量",
+    energy_h_2: "它一直\n存在于你内心",
+    energy_copy: "东方传统告诉我们，能量——气——流淌于万物之中。我们的产品，专为帮助你感知这种流动、与自然重新连接、唤醒内在古老能量而设计。",
+
+    // Footer (CN)
+    footer_copy_text: "东方能量生活方式品牌",
+    footer_nav: "导航",
+    footer_cr: "© 2026 OpenTree. 保留所有权利。",
+
+    // Add to cart (CN)
+    add_to_cart: "加入购物袋 →",
 
     // Philosophy
     philosophy_label: "OpenTree 之道",

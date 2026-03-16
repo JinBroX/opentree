@@ -3,79 +3,148 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shop | OpenTree — Eastern Ritual Wellness</title>
+  <title>Shop — OpenTree | Eastern Ritual Wellness</title>
   <link rel="icon" type="image/png" href="assets/img/favicon.png" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
 
   <header class="site-header" id="siteHeader">
-    <div class="container nav-wrapper">
-      <a href="index.html" class="logo"><img src="assets/img/logo-full-gold.png" alt="OpenTree" /></a>
-      <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+    <div class="nav-wrap">
+      <a href="index.html" class="logo">
+        <img src="assets/img/logo-full-gold.png" alt="OpenTree"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+        <span style="display:none;align-items:center;font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;letter-spacing:0.05em;color:#c4954a;">OpenTree</span>
+      </a>
       <nav class="site-nav" id="siteNav">
         <a href="index.html" data-i18n="nav_home">Home</a>
         <a href="shop.html" class="active" data-i18n="nav_shop">Shop</a>
         <a href="about.html" data-i18n="nav_about">About</a>
         <a href="contact.html" data-i18n="nav_contact">Contact</a>
       </nav>
-      <div class="nav-right">
-        <div class="lang-switcher">
-          <button class="lang-btn active" data-lang="en" onclick="switchLang('en')">EN</button>
-          <button class="lang-btn" data-lang="cn" onclick="switchLang('cn')">中文</button>
+      <div class="nav-actions">
+        <div class="lang-toggle">
+          <button class="active" data-lang="en" onclick="switchLang('en')">EN</button>
+          <span class="lang-sep">/</span>
+          <button data-lang="cn" onclick="switchLang('cn')">中</button>
         </div>
-        <button class="cart-btn" id="cartBtn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <button class="cart-btn" id="cartBtn" aria-label="Cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
           <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+          <span></span><span></span><span></span>
         </button>
       </div>
     </div>
   </header>
 
-  <section class="page-hero">
-    <div class="container">
-      <div class="page-hero-inner">
-        <div class="section-label"><span data-i18n="products_label">Sacred Collection</span></div>
-        <h1 data-i18n="shop_title">The Shop</h1>
-        <p data-i18n="shop_subtitle">Ritual tools for your modern spiritual practice</p>
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="page-hero-text">
+        <p class="caps" data-i18n="products_label">Sacred Collection</p>
+        <h1>
+          <span data-i18n="shop_title">The Shop</span><br />
+          <em data-i18n="shop_subtitle_em">Ritual Tools</em>
+        </h1>
+      </div>
+      <div class="page-hero-media">
+        <img
+          src="assets/img/ai/hero-bg.jpg"
+          onerror="this.src='https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=900&q=80'"
+          alt=""
+        />
       </div>
     </div>
-  </section>
+    <p class="page-hero-sub wrap" data-i18n="shop_copy">
+      Each product in our collection is chosen for its energetic quality and its ability to deepen your daily ritual practice.
+    </p>
+  </div>
 
+  <!-- SHOP SECTION -->
   <section class="shop-section">
-    <div class="container">
-      <div class="shop-filters">
-        <button class="filter-btn active" data-filter="all" data-i18n="filter_all">All</button>
-        <button class="filter-btn" data-filter="tea" data-i18n="filter_tea">Tea</button>
-        <button class="filter-btn" data-filter="stone" data-i18n="filter_stone">Stones</button>
-        <button class="filter-btn" data-filter="bracelet" data-i18n="filter_bracelet">Bracelets</button>
-        <button class="filter-btn" data-filter="incense" data-i18n="filter_incense">Incense</button>
-        <button class="filter-btn" data-filter="candle" data-i18n="filter_candle">Candles</button>
+    <div class="wrap">
+      <div class="shop-toolbar">
+        <div class="shop-filters" id="shopFilters">
+          <button class="filter-btn active" data-filter="all" data-i18n="filter_all">All</button>
+          <button class="filter-btn" data-filter="tea" data-i18n="filter_tea">Tea</button>
+          <button class="filter-btn" data-filter="stone" data-i18n="filter_stone">Stones</button>
+          <button class="filter-btn" data-filter="bracelet" data-i18n="filter_bracelet">Bracelets</button>
+          <button class="filter-btn" data-filter="incense" data-i18n="filter_incense">Incense</button>
+          <button class="filter-btn" data-filter="candle" data-i18n="filter_candle">Candles</button>
+        </div>
+        <span class="shop-count" id="shopCount"></span>
       </div>
       <div class="shop-grid" id="shopGrid"></div>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer class="site-footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <img src="assets/img/logo-full-white.png" alt="OpenTree" class="footer-logo-img" onerror="this.src='assets/img/logo-full-gold.png'" />
-          <p class="footer-tagline" data-i18n="footer_tagline">Eastern Ritual Wellness — ancient energy for modern life.</p>
+    <div class="footer-grid">
+      <div>
+        <img src="assets/img/logo-full-white.png" alt="OpenTree" class="footer-logo"
+             onerror="this.src='assets/img/logo-full-gold.png'" />
+        <p class="footer-copy" data-i18n="footer_copy_text">Eastern Ritual Wellness — ancient energy for modern life.</p>
+        <div class="social-row">
+          <a href="#" class="social-icon" aria-label="Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="TikTok">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.73a4.85 4.85 0 0 1-1.01-.04z"/></svg>
+          </a>
         </div>
-        <div class="footer-col"><h4 data-i18n="footer_navigate">Navigate</h4><a href="index.html" data-i18n="nav_home">Home</a><a href="shop.html" data-i18n="nav_shop">Shop</a><a href="about.html" data-i18n="nav_about">About</a><a href="contact.html" data-i18n="nav_contact">Contact</a></div>
-        <div class="footer-col"><h4 data-i18n="footer_help">Help</h4><a href="#" data-i18n="footer_shipping">Shipping</a><a href="#" data-i18n="footer_returns">Returns</a><a href="#" data-i18n="footer_privacy">Privacy</a><a href="#" data-i18n="footer_faq">FAQ</a></div>
-        <div class="footer-col"><h4 data-i18n="footer_follow">Follow</h4><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">Pinterest</a></div>
       </div>
-      <div class="footer-bottom"><p data-i18n="footer_copy">© 2026 OpenTree. All rights reserved.</p></div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_nav">Navigate</h4>
+        <a href="index.html" data-i18n="nav_home">Home</a>
+        <a href="shop.html" data-i18n="nav_shop">Shop</a>
+        <a href="about.html" data-i18n="nav_about">About</a>
+        <a href="contact.html" data-i18n="nav_contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_help">Help</h4>
+        <a href="#" data-i18n="footer_shipping">Shipping</a>
+        <a href="#" data-i18n="footer_returns">Returns</a>
+        <a href="#" data-i18n="footer_privacy">Privacy</a>
+        <a href="#" data-i18n="footer_faq">FAQ</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer_follow">Follow</h4>
+        <a href="#">Instagram</a><a href="#">TikTok</a>
+        <a href="#">Pinterest</a><a href="#">YouTube</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-i18n="footer_cr">© 2026 OpenTree. All rights reserved.</p>
+      <div class="footer-lang">
+        <button class="active" data-lang="en" onclick="switchLang('en')">EN</button>
+        <span style="color:rgba(255,255,255,0.2);padding:0 4px;">/</span>
+        <button data-lang="cn" onclick="switchLang('cn')">中文</button>
+      </div>
     </div>
   </footer>
 
   <div class="cart-overlay" id="cartOverlay"></div>
   <div class="cart-sidebar" id="cartSidebar">
-    <div class="cart-header"><h3 data-i18n="cart_title">Your Ritual Bag</h3><button class="cart-close" id="cartClose">&times;</button></div>
-    <div class="cart-items" id="cartItems"><p class="cart-empty"><span data-i18n="cart_empty">Your cart is empty.</span><br /><a href="shop.html" data-i18n="cart_explore">Explore the collection</a></p></div>
-    <div class="cart-footer" id="cartFooter" style="display:none"><div class="cart-total"><span data-i18n="cart_total">Total</span><span id="cartTotal">$0.00</span></div><a href="checkout.html" class="btn btn-dark cart-checkout-btn" data-i18n="cart_checkout">Checkout</a></div>
+    <div class="cart-header">
+      <h3 data-i18n="cart_title">Your Ritual Bag</h3>
+      <button class="cart-close" id="cartClose">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p class="cart-empty"><span data-i18n="cart_empty">Your cart is empty.</span><br />
+        <a href="shop.html" data-i18n="cart_explore">Explore the collection</a></p>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+      <div class="cart-total">
+        <span data-i18n="cart_total">Total</span>
+        <span id="cartTotal">$0.00</span>
+      </div>
+      <a href="checkout.html" class="btn btn-ink cart-checkout-btn" data-i18n="cart_checkout">Proceed to Checkout</a>
+    </div>
   </div>
 
   <script src="assets/js/i18n.js"></script>
@@ -83,21 +152,72 @@
   <script src="assets/js/cart.js"></script>
   <script src="assets/js/main.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const grid = document.getElementById('shopGrid');
-      if (grid) PRODUCTS.forEach(p => { grid.innerHTML += buildShopCard(p); });
+    // Add i18n keys for shop page
+    if (typeof I18N !== 'undefined') {
+      I18N.en.shop_subtitle_em = 'Ritual Tools';
+      I18N.en.shop_copy = 'Each product in our collection is chosen for its energetic quality and its ability to deepen your daily ritual practice.';
+      I18N.cn.shop_subtitle_em = '能量工具';
+      I18N.cn.shop_copy = '系列中每件产品都经过精心挑选，以其能量品质和加深日常仪式修行的能力为标准。';
+    }
 
-      document.querySelectorAll('.filter-btn').forEach(btn => {
+    function renderShop(filter) {
+      const grid = document.getElementById('shopGrid');
+      const count = document.getElementById('shopCount');
+      if (!grid || typeof PRODUCTS === 'undefined') return;
+      const lang = typeof currentLang !== 'undefined' ? currentLang : 'en';
+      const filtered = filter === 'all'
+        ? PRODUCTS
+        : PRODUCTS.filter(p => p.category?.toLowerCase() === filter || p.tag?.toLowerCase() === filter);
+
+      grid.innerHTML = filtered.map(p => {
+        const name = lang === 'cn' ? p.name_cn : p.name_en;
+        const desc = lang === 'cn' ? p.desc_cn : p.desc_en;
+        return `
+          <div class="shop-card reveal" data-category="${p.tag || p.category || ''}">
+            <div class="shop-card-img">
+              <img src="${p.image}" onerror="this.src='${p.image_fallback || ''}'" alt="${name}" loading="lazy" />
+            </div>
+            <div class="shop-card-body">
+              <div class="shop-card-tag">${p.category || 'Sacred Collection'}</div>
+              <h3 class="shop-card-name">${name}</h3>
+              <p class="shop-card-desc">${desc}</p>
+              <div class="shop-card-footer">
+                <span class="shop-price">$${p.price}</span>
+                <button class="btn-add-sm" onclick="addToCart(${p.id})">
+                  ${lang === 'cn' ? '加入购物袋' : 'Add to Bag'} →
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (count) {
+        count.textContent = `${filtered.length} ${lang === 'cn' ? '件产品' : 'products'}`;
+      }
+
+      // Observe new reveal elements
+      grid.querySelectorAll('.reveal').forEach(el => {
+        if (typeof observeReveal === 'function') observeReveal(el);
+        else el.classList.add('visible');
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderShop('all');
+      document.getElementById('shopFilters')?.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
-          const filter = btn.dataset.filter;
-          document.querySelectorAll('.shop-card').forEach(card => {
-            card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
-          });
+          renderShop(btn.dataset.filter);
         });
       });
     });
+    document.addEventListener('langChanged', () => {
+      const active = document.querySelector('.filter-btn.active');
+      renderShop(active?.dataset.filter || 'all');
+    });
   </script>
+
 </body>
 </html>
