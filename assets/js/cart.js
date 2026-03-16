@@ -15,24 +15,30 @@ function addToCart(productId) {
   const product = PRODUCTS.find(p => p.id === productId);
   if (!product) return;
 
+  const lang = typeof currentLang !== 'undefined' ? currentLang : 'en';
+  const name = lang === 'cn' ? product.name_cn : product.name_en;
+
   const cart = getCart();
   const existing = cart.find(item => item.id === productId);
 
   if (existing) {
     existing.qty += 1;
+    existing.name = name; // update lang
   } else {
     cart.push({
       id: product.id,
-      name: product.name,
+      name: name,
       price: product.price,
       image: product.image,
+      image_fallback: product.image_fallback,
       qty: 1
     });
   }
 
   saveCart(cart);
   openCart();
-  showToast(`${product.name} added to your bag`);
+  const toastMsg = lang === 'cn' ? `${name} 已加入购物袋` : `${name} added to your bag`;
+  showToast(toastMsg);
 }
 
 function removeFromCart(productId) {
@@ -74,7 +80,7 @@ function updateCartUI() {
 
   cartItemsEl.innerHTML = cart.map(item => `
     <div class="cart-item">
-      <img src="${item.image}" alt="${item.name}" />
+      <img src="${item.image}" onerror="this.src='${item.image_fallback||'https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=120&q=60'}'" alt="${item.name}" />
       <div class="cart-item-info">
         <strong>${item.name}</strong>
         <div class="cart-item-qty">
