@@ -1,0 +1,176 @@
+import type { Translations } from './zh';
+
+const en: Translations = {
+  nav: {
+    home: 'Home',
+    allProducts: 'All Products',
+    bian: 'Bian Stone',
+    agarwood: 'Agarwood',
+    videos: 'Videos',
+    about: 'Our Story',
+    buyNow: 'Shop Now',
+    cart: 'Bag',
+    menu: 'Menu',
+    shopNow: 'Shop Now',
+  },
+
+  footer: {
+    tagline: 'Awaken body wisdom, activate life energy. Merging ancient mineral energy of Bian stone with the millennium essence of agarwood.',
+    explore: 'Explore',
+    service: 'Support',
+    allProducts: 'All Products',
+    bian: 'Bian Stone',
+    agarwood: 'Agarwood',
+    videos: 'Videos',
+    about: 'Our Story',
+    shipping: 'Shipping Info',
+    returns: 'Returns & Exchanges',
+    faq: 'FAQ',
+    contact: 'Contact Us',
+    copyright: '© 2026 OpenTree · Eastern Energy Platform · All Rights Reserved',
+    privacy: 'Privacy Policy',
+    terms: 'Terms of Use',
+  },
+
+  home: {
+    heroPill: 'Eastern Millennia × Modern Empowerment',
+    heroH1a: 'When Nature\'s Essence',
+    heroH1b: 'Meets Your Body',
+    heroSub: 'Ancient mineral energy of Bian stone, millennium fragrance of agarwood —\nUnlock the body empowerment loop from within.',
+    heroCta1: 'Begin My Energy Journey',
+    heroCta2: 'Explore Our Philosophy',
+
+    marqueeItems: ['Body Energy', 'Bian Stone', 'Agarwood Healing', 'Eastern Wisdom', 'Frequency Resonance', 'Energy Loop', 'Zero Additives', 'Pure Natural'],
+
+    conceptLabel: 'Our Philosophy',
+    conceptTitle: 'Body Empowerment, Not a Supplement Logic',
+    conceptSubtitle: 'A lifestyle in tune with yourself',
+
+    productsLabel: 'Featured Products',
+    productsTitle: "Nature's Essence, Always With You",
+    productsViewAll: 'Explore All Products',
+    bianBannerTitle: 'Ancient Mineral\nResonance',
+    bianBannerCta: 'Explore Series',
+    agarwoodBannerTitle: 'Millennium Fragrance\nCalm Within',
+    agarwoodBannerCta: 'Explore Series',
+
+    storyLabel: 'Brand Story',
+    storyTitle: 'Given by Earth, Received by Body',
+    storyYears: '5 Yrs',
+    storyYearsLabel: 'Quality Refined, Zero Compromise',
+    storyReadMore: 'Read More',
+
+    videosLabel: 'Energy Videos',
+    videosTitle: 'Energy, Visible',
+    videosViewAll: 'View All',
+    tiktokFollow: 'Follow Us',
+    tiktokSub: 'Weekly updates · Energy lifestyle',
+
+    reviewsLabel: 'Real Stories',
+    reviewsTitle: 'They Said: Body Responds',
+    reviewsSub: 'Real users · Real experiences · Unfiltered',
+
+    ctaLabel: 'Take Action',
+    ctaTitle1: 'Your Body —',
+    ctaTitle2: 'How Long Has It Waited?',
+    ctaSub: 'Bian stone on skin, agarwood in the cup — every day is a chance to reconnect. Start your Eastern energy lifestyle.',
+    ctaBtn1: 'Begin My Energy Journey',
+    ctaBtn2: 'Watch Product Videos',
+  },
+
+  products: {
+    title: 'Explore All Products',
+    subtitle: "Nature's Essence, Always With You",
+    all: 'All',
+    bian: 'Bian Stone',
+    agarwood: 'Agarwood',
+    sortDefault: 'Default',
+    sortPriceAsc: 'Price: Low → High',
+    sortPriceDesc: 'Price: High → Low',
+    sortRating: 'Top Rated',
+    noResults: 'No products found',
+  },
+
+  detail: {
+    addToCart: 'Add to Bag',
+    buyNow: 'Buy Now',
+    inStock: 'In stock:',
+    left: 'left',
+    reviews: 'reviews',
+    highlights: 'Highlights',
+    specs: 'Specifications',
+    story: 'Product Story',
+    youMayLike: 'You May Also Like',
+  },
+
+  cart: {
+    title: 'Shopping Bag',
+    empty: 'Your bag is empty',
+    emptyHint: 'Discover your energy essentials',
+    shopNow: 'Shop Now',
+    quantity: 'Qty',
+    subtotal: 'Subtotal',
+    checkout: 'Checkout',
+    remove: 'Remove',
+  },
+
+  checkout: {
+    title: 'Checkout',
+    orderSummary: 'Order Summary',
+    shippingInfo: 'Shipping Information',
+    name: 'Full Name',
+    phone: 'Phone',
+    address: 'Address',
+    city: 'City',
+    province: 'State / Province',
+    postcode: 'Postcode',
+    paymentMethod: 'Payment Method',
+    placeOrder: 'Place Order',
+    total: 'Total',
+    shipping: 'Shipping',
+    free: 'Free',
+  },
+
+  about: {
+    label: 'About Us',
+    title: 'Given by Earth, Received by Body',
+    missionLabel: 'Mission',
+    valuesLabel: 'Values',
+    teamLabel: 'Team',
+  },
+
+  videos: {
+    title: 'Energy Videos',
+    subtitle: 'Short videos capturing every moment of body empowerment',
+    all: 'All',
+    bian: 'Bian Stone',
+    agarwood: 'Agarwood',
+    brand: 'Brand',
+    views: 'views',
+    follow: 'Follow Us',
+  },
+
+  common: {
+    loading: 'Loading...',
+    backToProducts: 'Back to Products',
+    viewDetails: 'View Details',
+    addToCart: 'Add to Bag',
+    outOfStock: 'Sold Out',
+    save: 'Save',
+    off: 'off',
+    trustSignals: [
+      { number: '10,000+', label: 'Happy Users' },
+      { number: '98%', label: 'Repeat Rate' },
+      { number: '5 Yrs', label: 'Quality Refined' },
+      { number: 'Zero', label: 'Additives' },
+    ],
+    energyConcept: [
+      { title: 'Frequency Resonance', desc: 'Bian stone contains 31 trace minerals beneficial to the human body. Its far-infrared frequency resonates with the body\'s bioelectricity, activating deep cellular vitality.' },
+      { title: 'Olfactory Healing', desc: 'Agarwood molecules reach the limbic system directly, regulating cortisol, calming anxiety, and restoring the nervous system to order.' },
+      { title: 'Mindful Anchor', desc: 'The ritual of wearing or sipping is a promise to yourself — I am caring for myself, I am empowering myself.' },
+      { title: 'Energy Accumulation', desc: 'Body empowerment is not a one-time event, but a daily micro-accumulation. Like a great tree: root deeper each day to grow higher.' },
+    ],
+  },
+};
+
+export default en;

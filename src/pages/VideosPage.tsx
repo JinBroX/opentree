@@ -1,184 +1,125 @@
-import { useState } from 'react';
-import { Play, Filter } from 'lucide-react';
-import { videos, brandCopy } from '../data/copy';
-
-type Category = 'all' | 'bian' | 'agarwood' | 'brand';
+import { Link } from 'react-router-dom';
+import { Play, ArrowUpRight, TrendingUp, Eye } from 'lucide-react';
+import { brandCopy, videos } from '../data/copy';
 
 export default function VideosPage() {
-  const [activeCategory, setActiveCategory] = useState<Category>('all');
-  const [playingId, setPlayingId] = useState<string | null>(null);
-
-  const filtered = videos.filter(
-    (v) => activeCategory === 'all' || v.category === activeCategory
-  );
-
-  const categories = [
-    { key: 'all' as Category, label: '全部' },
-    { key: 'brand' as Category, label: '品牌故事' },
-    { key: 'bian' as Category, label: '砭石系列' },
-    { key: 'agarwood' as Category, label: '沉香系列' },
-  ];
+  const featured = videos[0];
+  const rest = videos.slice(1);
 
   return (
-    <div className="min-h-screen bg-stone-50 pt-20">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <div className="bg-gradient-to-b from-stone-900 to-stone-800 text-white py-16 px-4">
-        <div className="max-w-7xl mx-auto text-center">
-          <span className="inline-block bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-6">
-            能量视频中心
-          </span>
-          <h1 className="font-display text-4xl md:text-5xl font-bold mb-4">
-            {brandCopy.videoSection.title}
-          </h1>
-          <p className="text-white/70 max-w-xl mx-auto text-lg">
-            {brandCopy.videoSection.subtitle}
-          </p>
+      <div className="bg-ink-950 pt-24 pb-14">
+        <div className="container-base text-center">
+          <p className="section-label text-ink-400 mb-4">能量视频</p>
+          <div className="divider mx-auto mb-6" />
+          <h1 className="display-md text-white mb-4">{brandCopy.videoSection.title}</h1>
+          <p className="text-ink-400 max-w-lg mx-auto text-[15px]">{brandCopy.videoSection.subtitle}</p>
         </div>
       </div>
 
-      {/* TikTok Banner */}
-      <div className="bg-gradient-to-r from-pink-600 to-cyan-600 py-4 px-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-center gap-4">
-          <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center font-bold text-stone-900 text-sm">
-            T
+      <div className="container-base py-12">
+        {/* Featured video */}
+        <div className="mb-10">
+          <p className="text-[12px] font-semibold tracking-widest uppercase text-ink-400 mb-5">精选视频</p>
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 items-start">
+            <div className="lg:col-span-3 group cursor-pointer relative rounded-2xl overflow-hidden bg-ink-100">
+              <div className="aspect-video">
+                <img src={featured.thumbnail} alt={featured.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-ink-950/90 via-ink-950/30 to-transparent" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center group-hover:scale-110 group-hover:bg-brand-500 transition-all duration-300">
+                  <Play className="w-6 h-6 text-white fill-white ml-1" />
+                </div>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <span className="badge bg-brand-500 text-white text-[10px] mb-3">精选</span>
+                <p className="text-white text-lg font-semibold leading-snug mb-2">{featured.title}</p>
+                <div className="flex items-center gap-3 text-white/50 text-xs">
+                  <span className="flex items-center gap-1"><Eye className="w-3 h-3" />{featured.views}</span>
+                  <span>{featured.duration}</span>
+                </div>
+              </div>
+            </div>
+            <div className="lg:col-span-2 space-y-3">
+              {rest.slice(0,3).map((v) => (
+                <div key={v.id} className="group cursor-pointer flex gap-4 p-3 rounded-xl hover:bg-ink-50 transition-colors">
+                  <div className="relative w-28 h-20 flex-shrink-0 rounded-lg overflow-hidden">
+                    <img src={v.thumbnail} alt={v.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                    <div className="absolute inset-0 bg-ink-950/30 flex items-center justify-center">
+                      <div className="w-7 h-7 rounded-full bg-white/80 flex items-center justify-center">
+                        <Play className="w-3 h-3 text-ink-900 fill-ink-900 ml-0.5" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex-1 min-w-0 py-1">
+                    <p className="text-ink-900 font-medium text-[13px] leading-snug clamp-2 mb-2">{v.title}</p>
+                    <div className="flex items-center gap-2 text-ink-400 text-[11px]">
+                      <span>{v.duration}</span>
+                      <span>·</span>
+                      <span className="flex items-center gap-1"><Eye className="w-3 h-3" />{v.views}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-          <p className="text-white font-medium text-sm">
-            {brandCopy.videoSection.tiktokBanner}
-          </p>
-          <a
-            href="#"
-            className="bg-white text-stone-900 text-xs font-semibold px-4 py-1.5 rounded-full hover:bg-stone-100 transition-colors"
-          >
+        </div>
+
+        {/* All videos */}
+        <div>
+          <p className="text-[12px] font-semibold tracking-widest uppercase text-ink-400 mb-5">全部视频</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {videos.map((v) => (
+              <div key={v.id} className="group cursor-pointer bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-hover transition-all duration-300 hover:-translate-y-1">
+                <div className="relative aspect-video overflow-hidden">
+                  <img src={v.thumbnail} alt={v.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-ink-950/20 group-hover:bg-ink-950/40 transition-colors flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:scale-100 scale-75 transition-all duration-300">
+                      <Play className="w-5 h-5 text-ink-900 fill-ink-900 ml-0.5" />
+                    </div>
+                  </div>
+                  <div className="absolute top-3 right-3 badge-dark text-[10px]">
+                    TikTok
+                  </div>
+                  <div className="absolute bottom-3 right-3 bg-ink-950/70 text-white text-[11px] px-2 py-0.5 rounded-full font-medium">
+                    {v.duration}
+                  </div>
+                </div>
+                <div className="p-4">
+                  <p className="text-ink-900 font-semibold text-[14px] leading-snug clamp-2 mb-2">{v.title}</p>
+                  <div className="flex items-center justify-between">
+                    <span className="flex items-center gap-1 text-ink-400 text-[12px]">
+                      <TrendingUp className="w-3 h-3" />
+                      {v.views} 播放
+                    </span>
+                    <span className={`badge text-[10px] ${v.category === 'bian' ? 'badge-dark' : v.category === 'agarwood' ? 'badge-forest' : 'badge-gold'}`}>
+                      {v.category === 'bian' ? '砭石' : v.category === 'agarwood' ? '沉香' : '品牌'}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* TikTok Follow Banner */}
+        <div className="mt-10 p-8 rounded-2xl bg-ink-950 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-5">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 via-red-500 to-yellow-400 flex items-center justify-center text-white font-black text-2xl shadow-glow-brand">
+              T
+            </div>
+            <div>
+              <p className="text-white font-semibold text-[16px]">{brandCopy.videoSection.tiktokBanner}</p>
+              <p className="text-ink-400 text-sm mt-1">每周更新 · 能量日常记录</p>
+            </div>
+          </div>
+          <a href="#" className="btn-primary-gold whitespace-nowrap">
             立即关注
+            <ArrowUpRight className="w-4 h-4" />
           </a>
         </div>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        {/* Filter */}
-        <div className="flex items-center gap-3 mb-8 flex-wrap">
-          <Filter className="w-4 h-4 text-stone-400" />
-          {categories.map((cat) => (
-            <button
-              key={cat.key}
-              onClick={() => setActiveCategory(cat.key)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                activeCategory === cat.key
-                  ? 'bg-stone-800 text-white'
-                  : 'bg-white text-stone-600 hover:bg-stone-100 border border-stone-200'
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Featured Video */}
-        {activeCategory === 'all' && (
-          <div className="mb-10 relative rounded-3xl overflow-hidden bg-stone-900 group cursor-pointer"
-            onClick={() => setPlayingId(videos[2].id)}
-          >
-            <div className="aspect-video sm:aspect-[21/7]">
-              <img
-                src={videos[2].thumbnail}
-                alt={videos[2].title}
-                className="w-full h-full object-cover opacity-70 group-hover:opacity-60 transition-opacity"
-              />
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent flex items-center">
-              <div className="p-8 sm:p-12 max-w-xl">
-                <span className="text-amber-300 text-xs font-semibold tracking-widest uppercase mb-3 block">
-                  精选推荐
-                </span>
-                <h2 className="font-display text-2xl sm:text-3xl text-white font-bold mb-4">
-                  {videos[2].title}
-                </h2>
-                <div className="flex items-center gap-4 text-white/60 text-sm mb-6">
-                  <span>{videos[2].duration}</span>
-                  <span>{videos[2].views} 次播放</span>
-                </div>
-                <button className="flex items-center gap-3 bg-white text-stone-900 font-semibold px-6 py-3 rounded-full hover:bg-amber-50 transition-colors">
-                  <Play className="w-4 h-4 fill-current" />
-                  立即观看
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Video Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((video) => (
-            <div
-              key={video.id}
-              className="group relative rounded-2xl overflow-hidden bg-stone-100 cursor-pointer"
-              onClick={() => setPlayingId(video.id)}
-            >
-              <div className="aspect-video">
-                <img
-                  src={video.thumbnail}
-                  alt={video.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className={`w-14 h-14 rounded-full flex items-center justify-center border-2 border-white/50 transition-all duration-300 group-hover:scale-110 ${
-                  playingId === video.id ? 'bg-earth-500 border-earth-400' : 'bg-white/20 backdrop-blur-sm'
-                }`}>
-                  <div className="w-0 h-0 border-t-[8px] border-b-[8px] border-l-[14px] border-transparent border-l-white ml-1" />
-                </div>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <span className="text-amber-300 text-xs font-medium uppercase tracking-wide block mb-1">
-                  {video.category === 'brand' ? '品牌' : video.category === 'bian' ? '砭石' : '沉香'}
-                </span>
-                <p className="text-white font-semibold text-sm line-clamp-2 mb-2">
-                  {video.title}
-                </p>
-                <div className="flex items-center gap-3 text-white/50 text-xs">
-                  <span>▶ {video.duration}</span>
-                  <span>{video.views}</span>
-                </div>
-              </div>
-              <div className="absolute top-3 right-3">
-                <span className="bg-black/60 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full font-medium">
-                  TikTok
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Placeholder for embedding */}
-        {playingId && (
-          <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
-            onClick={() => setPlayingId(null)}
-          >
-            <div className="bg-stone-900 rounded-3xl p-8 max-w-lg w-full text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-cyan-500 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl font-bold text-white">
-                T
-              </div>
-              <h3 className="text-white font-semibold text-lg mb-2">
-                {videos.find(v => v.id === playingId)?.title}
-              </h3>
-              <p className="text-stone-400 text-sm mb-6">
-                请前往 TikTok @opentree.energy 观看完整视频
-              </p>
-              <div className="flex gap-3 justify-center">
-                <a href="#" className="bg-white text-stone-900 font-semibold px-5 py-2.5 rounded-full text-sm hover:bg-stone-100 transition-colors">
-                  前往 TikTok
-                </a>
-                <button
-                  onClick={() => setPlayingId(null)}
-                  className="border border-stone-600 text-stone-400 font-medium px-5 py-2.5 rounded-full text-sm hover:border-stone-400 hover:text-white transition-colors"
-                >
-                  关闭
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

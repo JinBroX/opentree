@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ChevronLeft, Star, ShoppingBag, Minus, Plus, Share2, Heart, ChevronDown } from 'lucide-react';
+import { ChevronLeft, Star, ShoppingBag, Minus, Plus, Heart, ChevronDown, CheckCircle } from 'lucide-react';
 import { products, reviews } from '../data/copy';
 import { useCartStore } from '../store/cartStore';
 import ProductCard from '../components/ProductCard';
@@ -11,12 +11,12 @@ export default function ProductDetailPage() {
   const product = products.find((p) => p.id === id);
   const addItem = useCartStore((s) => s.addItem);
 
-  const [selectedImage, setSelectedImage] = useState(0);
-  const [quantity, setQuantity] = useState(1);
-  const [selectedVariants, setSelectedVariants] = useState<Record<string, string>>(() => {
-    const defaults: Record<string, string> = {};
-    product?.variants?.forEach((v) => { defaults[v.name] = v.options[0]; });
-    return defaults;
+  const [selImg, setSelImg] = useState(0);
+  const [qty, setQty] = useState(1);
+  const [selVariants, setSelVariants] = useState<Record<string, string>>(() => {
+    const d: Record<string, string> = {};
+    product?.variants?.forEach((v) => { d[v.name] = v.options[0]; });
+    return d;
   });
   const [openSpec, setOpenSpec] = useState(false);
   const [liked, setLiked] = useState(false);
@@ -25,7 +25,7 @@ export default function ProductDetailPage() {
     return (
       <div className="min-h-screen flex items-center justify-center pt-20">
         <div className="text-center">
-          <p className="text-stone-500 text-lg mb-4">产品不存在</p>
+          <p className="text-ink-400 mb-4">产品不存在</p>
           <Link to="/products" className="btn-primary">返回产品列表</Link>
         </div>
       </div>
@@ -33,66 +33,55 @@ export default function ProductDetailPage() {
   }
 
   const productReviews = reviews.filter((r) => r.productId === product.id);
-  const relatedProducts = products
-    .filter((p) => p.category === product.category && p.id !== product.id)
-    .slice(0, 4);
-
-  const handleAddToCart = () => {
-    addItem(product, quantity, selectedVariants);
-  };
-
-  const handleBuyNow = () => {
-    addItem(product, quantity, selectedVariants);
-    navigate('/checkout');
-  };
+  const related = products.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 4);
+  const discount = product.originalPrice
+    ? Math.round((1 - product.price / product.originalPrice) * 100)
+    : null;
 
   return (
-    <div className="min-h-screen bg-white pt-16 lg:pt-20">
+    <div className="min-h-screen bg-white pt-16 lg:pt-[70px]">
       {/* Breadcrumb */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <nav className="flex items-center gap-2 text-sm text-stone-400">
-          <Link to="/" className="hover:text-earth-600 transition-colors">首页</Link>
-          <span>/</span>
-          <Link to="/products" className="hover:text-earth-600 transition-colors">产品</Link>
-          <span>/</span>
-          <span className="text-stone-700">{product.name}</span>
-        </nav>
+      <div className="container-base py-4 flex items-center gap-2 text-[13px] text-ink-400">
+        <Link to="/" className="hover:text-ink-700 transition-colors">首页</Link>
+        <span>/</span>
+        <Link to="/products" className="hover:text-ink-700 transition-colors">产品</Link>
+        <span>/</span>
+        <span className="text-ink-700">{product.name}</span>
       </div>
 
-      {/* Main Product */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+      <div className="container-base py-6 pb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
           {/* Images */}
-          <div>
-            <div className="relative aspect-square rounded-3xl overflow-hidden bg-amber-50 mb-4">
+          <div className="sticky top-[80px] self-start">
+            <div className="relative aspect-square rounded-2xl overflow-hidden bg-ink-50 mb-3">
               <img
-                src={product.images[selectedImage]}
+                src={product.images[selImg]}
                 alt={product.name}
                 className="w-full h-full object-cover"
               />
               {product.badge && (
-                <span className="absolute top-4 left-4 bg-earth-500 text-white text-sm font-medium px-3 py-1.5 rounded-full">
-                  {product.badge}
-                </span>
+                <span className="absolute top-4 left-4 badge bg-brand-500 text-white">{product.badge}</span>
+              )}
+              {discount && (
+                <span className="absolute top-4 right-12 badge bg-red-500 text-white">-{discount}%</span>
               )}
               <button
                 onClick={() => setLiked(!liked)}
-                className={`absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center shadow-md transition-all ${
-                  liked ? 'bg-red-500 text-white' : 'bg-white/90 text-stone-600 hover:text-red-500'
+                className={`absolute top-4 right-4 w-9 h-9 rounded-full flex items-center justify-center shadow-card transition-all ${
+                  liked ? 'bg-red-500 text-white' : 'bg-white text-ink-400 hover:text-red-400'
                 }`}
               >
                 <Heart className="w-4 h-4" fill={liked ? 'currentColor' : 'none'} />
               </button>
             </div>
-            {/* Thumbnails */}
             {product.images.length > 1 && (
-              <div className="flex gap-3">
+              <div className="flex gap-2.5">
                 {product.images.map((img, i) => (
                   <button
                     key={i}
-                    onClick={() => setSelectedImage(i)}
-                    className={`w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 transition-all ${
-                      selectedImage === i ? 'ring-2 ring-earth-500 ring-offset-2' : 'opacity-60 hover:opacity-100'
+                    onClick={() => setSelImg(i)}
+                    className={`w-[72px] h-[72px] rounded-xl overflow-hidden flex-shrink-0 transition-all ${
+                      selImg === i ? 'ring-2 ring-brand-500 ring-offset-2' : 'opacity-50 hover:opacity-100'
                     }`}
                   >
                     <img src={img} alt="" className="w-full h-full object-cover" />
@@ -104,57 +93,52 @@ export default function ProductDetailPage() {
 
           {/* Info */}
           <div>
-            <p className="text-earth-600 text-sm font-medium tracking-wider uppercase mb-2">
+            <p className="section-label mb-2">
               {product.category === 'bian' ? '砭石系列' : '沉香系列'}
             </p>
-            <h1 className="font-display text-3xl lg:text-4xl font-bold text-stone-800 mb-2">
+            <h1 className="font-display text-3xl lg:text-[40px] font-bold text-ink-950 leading-tight mb-2">
               {product.name}
             </h1>
-            <p className="text-stone-500 text-lg mb-4">{product.subtitle}</p>
-            <p className="text-earth-700 font-medium italic mb-6">" {product.tagline} "</p>
+            <p className="text-ink-400 text-[16px] mb-3">{product.subtitle}</p>
+            <p className="text-brand-600 italic text-[15px] font-medium mb-5">「{product.tagline}」</p>
 
             {/* Rating */}
-            <div className="flex items-center gap-3 mb-6">
-              <div className="flex">
+            <div className="flex items-center gap-2.5 mb-6">
+              <div className="flex gap-0.5">
                 {[...Array(5)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'text-amber-400 fill-amber-400' : 'text-stone-200'}`}
-                  />
+                  <Star key={i} className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'fill-brand-400 text-brand-400' : 'fill-ink-100 text-ink-100'}`} />
                 ))}
               </div>
-              <span className="font-medium text-stone-700">{product.rating}</span>
-              <span className="text-stone-400 text-sm">({product.reviewCount} 条评价)</span>
+              <span className="font-semibold text-ink-800 text-[14px]">{product.rating}</span>
+              <span className="text-ink-400 text-[13px]">({product.reviewCount} 条评价)</span>
             </div>
 
             {/* Price */}
-            <div className="flex items-baseline gap-3 mb-8">
-              <span className="text-4xl font-bold text-stone-800">¥{product.price}</span>
+            <div className="flex items-baseline gap-3 mb-8 pb-8 border-b border-ink-100">
+              <span className="text-4xl font-bold text-ink-950">¥{product.price}</span>
               {product.originalPrice && (
-                <span className="text-xl text-stone-400 line-through">¥{product.originalPrice}</span>
-              )}
-              {product.originalPrice && (
-                <span className="bg-red-50 text-red-600 text-sm font-medium px-2 py-0.5 rounded-full">
-                  节省 ¥{product.originalPrice - product.price}
-                </span>
+                <>
+                  <span className="text-xl text-ink-300 line-through">¥{product.originalPrice}</span>
+                  <span className="badge bg-red-50 text-red-500">节省 ¥{product.originalPrice - product.price}</span>
+                </>
               )}
             </div>
 
             {/* Variants */}
             {product.variants?.map((variant) => (
               <div key={variant.name} className="mb-6">
-                <p className="text-sm font-medium text-stone-700 mb-2">
-                  {variant.name}：<span className="text-earth-600">{selectedVariants[variant.name]}</span>
+                <p className="text-[13px] font-semibold text-ink-700 mb-2.5">
+                  {variant.name}：<span className="text-brand-600 font-bold">{selVariants[variant.name]}</span>
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {variant.options.map((opt) => (
                     <button
                       key={opt}
-                      onClick={() => setSelectedVariants({ ...selectedVariants, [variant.name]: opt })}
-                      className={`px-4 py-2 rounded-xl text-sm font-medium border transition-all ${
-                        selectedVariants[variant.name] === opt
-                          ? 'border-earth-500 bg-earth-50 text-earth-700'
-                          : 'border-stone-200 text-stone-600 hover:border-earth-300'
+                      onClick={() => setSelVariants({ ...selVariants, [variant.name]: opt })}
+                      className={`px-4 py-2 rounded-xl text-[13px] font-medium border-2 transition-all ${
+                        selVariants[variant.name] === opt
+                          ? 'border-ink-950 bg-ink-950 text-white'
+                          : 'border-ink-200 text-ink-600 hover:border-ink-400'
                       }`}
                     >
                       {opt}
@@ -165,68 +149,68 @@ export default function ProductDetailPage() {
             ))}
 
             {/* Quantity */}
-            <div className="flex items-center gap-4 mb-8">
-              <p className="text-sm font-medium text-stone-700">数量</p>
-              <div className="flex items-center gap-2 border border-stone-200 rounded-xl px-2">
+            <div className="flex items-center gap-4 mb-7">
+              <p className="text-[13px] font-semibold text-ink-700">数量</p>
+              <div className="flex items-center gap-0 border border-ink-200 rounded-xl overflow-hidden">
                 <button
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="p-2 hover:text-earth-600 transition-colors"
+                  onClick={() => setQty(Math.max(1, qty - 1))}
+                  className="w-10 h-10 flex items-center justify-center text-ink-600 hover:bg-ink-50 transition-colors"
                 >
                   <Minus className="w-4 h-4" />
                 </button>
-                <span className="w-8 text-center font-medium">{quantity}</span>
+                <span className="w-10 text-center font-semibold text-ink-900">{qty}</span>
                 <button
-                  onClick={() => setQuantity(Math.min(product.stock, quantity + 1))}
-                  className="p-2 hover:text-earth-600 transition-colors"
+                  onClick={() => setQty(Math.min(product.stock, qty + 1))}
+                  className="w-10 h-10 flex items-center justify-center text-ink-600 hover:bg-ink-50 transition-colors"
                 >
                   <Plus className="w-4 h-4" />
                 </button>
               </div>
-              <span className="text-xs text-stone-400">库存 {product.stock} 件</span>
+              <span className="text-[12px] text-ink-400">库存 {product.stock} 件</span>
             </div>
 
-            {/* Actions */}
-            <div className="flex gap-3 mb-8">
+            {/* CTAs */}
+            <div className="flex gap-3 mb-7">
               <button
-                onClick={handleAddToCart}
-                className="flex-1 btn-secondary justify-center"
+                onClick={() => addItem(product, qty, selVariants)}
+                className="flex-1 btn-outline justify-center"
               >
                 <ShoppingBag className="w-4 h-4" />
                 加入购物袋
               </button>
               <button
-                onClick={handleBuyNow}
-                className="flex-1 btn-primary justify-center"
+                onClick={() => { addItem(product, qty, selVariants); navigate('/checkout'); }}
+                className="flex-1 btn-primary-gold justify-center"
               >
                 立即购买
               </button>
             </div>
 
-            {/* Trust badges */}
-            <div className="flex flex-wrap gap-3">
-              {['正品保证', '7天退换', '满299免运', '礼品包装'].map((b) => (
-                <span key={b} className="text-xs text-stone-500 bg-stone-50 border border-stone-100 px-3 py-1.5 rounded-full">
-                  ✓ {b}
+            {/* Trust */}
+            <div className="flex flex-wrap gap-2">
+              {['正品保证', '7天退换', '满299免邮', '礼品包装'].map((b) => (
+                <span key={b} className="flex items-center gap-1.5 text-[12px] text-ink-500 bg-ink-50 px-3 py-1.5 rounded-full">
+                  <CheckCircle className="w-3.5 h-3.5 text-forest-500" />
+                  {b}
                 </span>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Product Details */}
+        {/* Details section */}
         <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Description */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-2 space-y-10">
             <div>
-              <h2 className="font-semibold text-stone-800 text-xl mb-4">产品介绍</h2>
-              <p className="text-stone-600 leading-relaxed">{product.description}</p>
+              <h2 className="font-semibold text-ink-900 text-xl mb-4">产品介绍</h2>
+              <p className="text-ink-500 leading-relaxed text-[15px]">{product.description}</p>
             </div>
             <div>
-              <h2 className="font-semibold text-stone-800 text-xl mb-4">产品亮点</h2>
-              <ul className="space-y-2.5">
+              <h2 className="font-semibold text-ink-900 text-xl mb-4">产品亮点</h2>
+              <ul className="space-y-3">
                 {product.highlights.map((h, i) => (
-                  <li key={i} className="flex items-start gap-3 text-stone-600">
-                    <span className="w-5 h-5 rounded-full bg-sage-100 text-sage-700 text-xs flex items-center justify-center flex-shrink-0 mt-0.5 font-medium">
+                  <li key={i} className="flex items-start gap-3 text-ink-500 text-[15px]">
+                    <span className="w-5 h-5 rounded-full bg-brand-100 text-brand-700 text-[11px] flex items-center justify-center flex-shrink-0 mt-0.5 font-bold">
                       {i + 1}
                     </span>
                     {h}
@@ -235,59 +219,52 @@ export default function ProductDetailPage() {
               </ul>
             </div>
             <div>
-              <h2 className="font-semibold text-stone-800 text-xl mb-4">产品故事</h2>
-              <p className="text-stone-600 leading-relaxed">{product.story}</p>
+              <h2 className="font-semibold text-ink-900 text-xl mb-4">产品故事</h2>
+              <p className="text-ink-500 leading-relaxed text-[15px]">{product.story}</p>
             </div>
           </div>
 
-          {/* Specs */}
           <div>
-            <div
-              className="bg-amber-50 rounded-2xl p-6 cursor-pointer"
+            <button
               onClick={() => setOpenSpec(!openSpec)}
+              className="w-full bg-ink-50 rounded-2xl p-5 text-left hover:bg-ink-100 transition-colors"
             >
-              <div className="flex items-center justify-between mb-2">
-                <h2 className="font-semibold text-stone-800 text-lg">产品规格</h2>
-                <ChevronDown
-                  className={`w-5 h-5 text-stone-500 transition-transform ${openSpec ? 'rotate-180' : ''}`}
-                />
+              <div className="flex items-center justify-between">
+                <h2 className="font-semibold text-ink-900">产品规格</h2>
+                <ChevronDown className={`w-5 h-5 text-ink-400 transition-transform ${openSpec ? 'rotate-180' : ''}`} />
               </div>
-              <div className={`space-y-3 overflow-hidden transition-all ${openSpec ? 'max-h-96 mt-4' : 'max-h-0'}`}>
+              <div className={`space-y-3 overflow-hidden transition-all ${openSpec ? 'max-h-[400px] mt-4' : 'max-h-0'}`}>
                 {product.specs.map((spec) => (
-                  <div key={spec.label} className="flex justify-between text-sm">
-                    <span className="text-stone-500">{spec.label}</span>
-                    <span className="text-stone-700 font-medium text-right max-w-[60%]">{spec.value}</span>
+                  <div key={spec.label} className="flex justify-between text-[13px]">
+                    <span className="text-ink-400">{spec.label}</span>
+                    <span className="text-ink-800 font-medium text-right max-w-[60%]">{spec.value}</span>
                   </div>
                 ))}
               </div>
-              {!openSpec && (
-                <p className="text-earth-600 text-sm mt-1">点击查看完整规格</p>
-              )}
-            </div>
+              {!openSpec && <p className="text-brand-500 text-[13px] mt-2">点击展开规格</p>}
+            </button>
           </div>
         </div>
 
         {/* Reviews */}
         {productReviews.length > 0 && (
-          <div className="mt-16">
-            <h2 className="font-semibold text-stone-800 text-xl mb-6">
-              用户评价 ({productReviews.length})
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {productReviews.map((review) => (
-                <div key={review.id} className="bg-stone-50 rounded-2xl p-6">
-                  <div className="flex items-center gap-1 mb-3">
-                    {[...Array(review.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 text-amber-400 fill-amber-400" />
+          <div className="mt-14">
+            <h2 className="font-semibold text-ink-900 text-xl mb-6">用户评价 ({productReviews.length})</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {productReviews.map((r) => (
+                <div key={r.id} className="bg-ink-50 rounded-2xl p-6">
+                  <div className="flex gap-0.5 mb-3">
+                    {[...Array(r.rating)].map((_, i) => (
+                      <Star key={i} className="w-3.5 h-3.5 fill-brand-400 text-brand-400" />
                     ))}
                   </div>
-                  <p className="text-stone-600 leading-relaxed mb-4 italic">"{review.content}"</p>
+                  <p className="text-ink-500 text-[14px] leading-relaxed mb-4 italic">"{r.content}"</p>
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <img src={review.avatar} alt={review.author} className="w-8 h-8 rounded-full" />
-                      <span className="text-sm font-medium text-stone-700">{review.author}</span>
+                    <div className="flex items-center gap-2.5">
+                      <img src={r.avatar} alt={r.author} className="w-8 h-8 rounded-full" />
+                      <span className="text-[13px] font-semibold text-ink-800">{r.author}</span>
                     </div>
-                    <span className="text-xs text-stone-400">{review.date}</span>
+                    <span className="text-[11px] text-ink-300">{r.date}</span>
                   </div>
                 </div>
               ))}
@@ -295,12 +272,12 @@ export default function ProductDetailPage() {
           </div>
         )}
 
-        {/* Related Products */}
-        {relatedProducts.length > 0 && (
-          <div className="mt-20">
-            <h2 className="font-semibold text-stone-800 text-xl mb-6">同系列产品</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {relatedProducts.map((p) => (
+        {/* Related */}
+        {related.length > 0 && (
+          <div className="mt-16">
+            <h2 className="font-semibold text-ink-900 text-xl mb-6">同系列产品</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {related.map((p) => (
                 <ProductCard key={p.id} product={p} />
               ))}
             </div>

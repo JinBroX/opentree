@@ -1,9 +1,9 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { Product } from '../data/copy';
+import type { Product } from '../data/copy';
 
-export type CartItem = {
-  product: Product;
+// Flat cart item for easy access
+export type CartItem = Product & {
   quantity: number;
   selectedVariants: Record<string, string>;
   cartItemId: string;
@@ -12,7 +12,7 @@ export type CartItem = {
 type CartStore = {
   items: CartItem[];
   isOpen: boolean;
-  addItem: (product: Product, quantity: number, variants: Record<string, string>) => void;
+  addItem: (product: Product, quantity?: number, variants?: Record<string, string>) => void;
   removeItem: (cartItemId: string) => void;
   updateQuantity: (cartItemId: string, quantity: number) => void;
   clearCart: () => void;
@@ -29,14 +29,13 @@ export const useCartStore = create<CartStore>()(
       items: [],
       isOpen: false,
 
-      addItem: (product, quantity, selectedVariants) => {
+      addItem: (product, quantity = 1, selectedVariants = {}) => {
         const cartItemId = `${product.id}-${JSON.stringify(selectedVariants)}`;
-        const items = get().items;
-        const existing = items.find((i) => i.cartItemId === cartItemId);
+        const existing = get().items.find((i) => i.cartItemId === cartItemId);
 
         if (existing) {
           set({
-            items: items.map((i) =>
+            items: get().items.map((i) =>
               i.cartItemId === cartItemId
                 ? { ...i, quantity: i.quantity + quantity }
                 : i
@@ -45,7 +44,7 @@ export const useCartStore = create<CartStore>()(
           });
         } else {
           set({
-            items: [...items, { product, quantity, selectedVariants, cartItemId }],
+            items: [...get().items, { ...product, quantity, selectedVariants, cartItemId }],
             isOpen: true,
           });
         }
@@ -68,16 +67,13 @@ export const useCartStore = create<CartStore>()(
       },
 
       clearCart: () => set({ items: [] }),
-
       toggleCart: () => set({ isOpen: !get().isOpen }),
       openCart: () => set({ isOpen: true }),
       closeCart: () => set({ isOpen: false }),
 
       totalCount: () => get().items.reduce((sum, i) => sum + i.quantity, 0),
-
-      totalPrice: () =>
-        get().items.reduce((sum, i) => sum + i.product.price * i.quantity, 0),
+      totalPrice: () => get().items.reduce((sum, i) => sum + i.price * i.quantity, 0),
     }),
-    { name: 'opentree-cart' }
+    { name: 'opentree-cart-v2' }
   )
 );

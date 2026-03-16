@@ -1,120 +1,94 @@
 import { Link } from 'react-router-dom';
-import { Leaf, Instagram, Youtube, Music2 } from 'lucide-react';
+import { ArrowUpRight, Instagram, Youtube } from 'lucide-react';
+import { useLang } from '../i18n/LangContext';
 
 export default function Footer() {
-  return (
-    <footer className="bg-stone-900 text-stone-300">
-      {/* Top banner */}
-      <div className="bg-gradient-to-r from-earth-700 via-earth-600 to-sage-600 py-4 px-6 text-center text-white">
-        <p className="text-sm font-medium">
-          ✨ 满 ¥299 免运费 &nbsp;·&nbsp; 7天无理由退换 &nbsp;·&nbsp; 正品保证
-        </p>
-      </div>
+  const { t } = useLang();
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+  const exploreLinks = [
+    { label: t.footer.allProducts, href: '/products' },
+    { label: t.footer.bian, href: '/products?category=bian' },
+    { label: t.footer.agarwood, href: '/products?category=agarwood' },
+    { label: t.footer.videos, href: '/videos' },
+    { label: t.footer.about, href: '/about' },
+  ];
+
+  const supportLinks = [
+    { label: t.footer.shipping, href: '#' },
+    { label: t.footer.returns, href: '#' },
+    { label: t.footer.faq, href: '#' },
+    { label: t.footer.contact, href: '#' },
+  ];
+
+  return (
+    <footer className="bg-ink-950 text-white">
+      {/* Main grid */}
+      <div className="container-base py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
-          <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-br from-sage-500 to-earth-500 rounded-full flex items-center justify-center">
-                <Leaf className="w-4 h-4 text-white" />
-              </div>
-              <span className="font-display text-xl font-semibold text-white">OpenTree</span>
-            </Link>
-            <p className="text-stone-400 text-sm leading-relaxed mb-6">
-              开启身体智慧，激活生命能量。<br />
-              东方千年精粹 × 现代赋能哲学。
+          <div className="lg:col-span-2">
+            <div className="flex items-center gap-2.5 mb-5">
+              {/* Logo — inverted white version on dark bg */}
+              <img
+                src="/opentree-logo.png"
+                alt="OpenTree"
+                className="h-10 w-auto brightness-0 invert opacity-90"
+              />
+            </div>
+            <p className="text-ink-400 text-[14px] leading-relaxed max-w-xs mb-7">
+              {t.footer.tagline}
             </p>
             <div className="flex items-center gap-3">
-              <a href="#" className="w-9 h-9 bg-stone-800 hover:bg-earth-600 rounded-full flex items-center justify-center transition-colors">
-                <Music2 className="w-4 h-4" />
-              </a>
-              <a href="#" className="w-9 h-9 bg-stone-800 hover:bg-earth-600 rounded-full flex items-center justify-center transition-colors">
+              <a href="#" className="w-9 h-9 rounded-xl bg-white/8 hover:bg-brand-500 flex items-center justify-center transition-colors text-ink-400 hover:text-white">
                 <Instagram className="w-4 h-4" />
               </a>
-              <a href="#" className="w-9 h-9 bg-stone-800 hover:bg-earth-600 rounded-full flex items-center justify-center transition-colors">
+              <a href="#" className="w-9 h-9 rounded-xl bg-white/8 hover:bg-brand-500 flex items-center justify-center transition-colors text-ink-400 hover:text-white">
                 <Youtube className="w-4 h-4" />
+              </a>
+              <a href="#" className="w-9 h-9 rounded-xl bg-white/8 hover:bg-red-500 flex items-center justify-center transition-colors text-ink-400 hover:text-white text-xs font-bold">
+                T
               </a>
             </div>
           </div>
 
-          {/* Products */}
-          <div>
-            <h4 className="text-white font-semibold mb-4 text-sm tracking-wider uppercase">产品系列</h4>
-            <ul className="space-y-2.5">
-              {[
-                { href: '/products?category=bian', label: '砭石手串' },
-                { href: '/products?category=bian', label: '砭石吊坠' },
-                { href: '/products?category=agarwood', label: '沉香养生茶' },
-                { href: '/products?category=agarwood', label: '沉香礼盒' },
-                { href: '/products', label: '全部产品' },
-              ].map((link) => (
-                <li key={link.label}>
-                  <Link
-                    to={link.href}
-                    className="text-stone-400 hover:text-white transition-colors text-sm"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Info */}
-          <div>
-            <h4 className="text-white font-semibold mb-4 text-sm tracking-wider uppercase">关于我们</h4>
-            <ul className="space-y-2.5">
-              {[
-                { href: '/about', label: '品牌故事' },
-                { href: '/videos', label: '能量视频' },
-                { href: '/about#philosophy', label: '赋能哲学' },
-                { href: '/about#quality', label: '品质承诺' },
-              ].map((link) => (
-                <li key={link.label}>
-                  <Link
-                    to={link.href}
-                    className="text-stone-400 hover:text-white transition-colors text-sm"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Support */}
-          <div>
-            <h4 className="text-white font-semibold mb-4 text-sm tracking-wider uppercase">客户服务</h4>
-            <ul className="space-y-2.5">
-              {[
-                '运费说明',
-                '退换政策',
-                '配送时效',
-                '联系我们',
-              ].map((item) => (
-                <li key={item}>
-                  <span className="text-stone-400 hover:text-white transition-colors text-sm cursor-pointer">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6 p-4 bg-stone-800 rounded-xl">
-              <p className="text-xs text-stone-400 mb-1">客服微信</p>
-              <p className="text-white font-medium text-sm">opentree2025</p>
-              <p className="text-xs text-stone-400 mt-2">工作日 9:00–18:00</p>
+          {/* Nav columns */}
+          {[
+            { title: t.footer.explore, items: exploreLinks },
+            { title: t.footer.service, items: supportLinks },
+          ].map((col) => (
+            <div key={col.title}>
+              <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-ink-500 mb-5">
+                {col.title}
+              </p>
+              <ul className="space-y-3">
+                {col.items.map((item) => (
+                  <li key={item.label}>
+                    <Link
+                      to={item.href}
+                      className="text-ink-400 hover:text-white text-[14px] transition-colors flex items-center gap-1 group"
+                    >
+                      {item.label}
+                      <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
+          ))}
         </div>
+      </div>
 
-        <div className="mt-12 pt-8 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-stone-500 text-xs">
-            © 2026 OpenTree. All rights reserved. 东方能量 · 身体赋能
-          </p>
-          <div className="flex items-center gap-4 text-xs text-stone-500">
-            <span className="hover:text-stone-300 cursor-pointer transition-colors">隐私政策</span>
-            <span className="hover:text-stone-300 cursor-pointer transition-colors">用户协议</span>
+      {/* Bottom bar */}
+      <div className="border-t border-white/8">
+        <div className="container-base py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-ink-500 text-[12px]">{t.footer.copyright}</p>
+          <div className="flex items-center gap-5">
+            <a href="#" className="text-ink-500 hover:text-ink-300 text-[12px] transition-colors">
+              {t.footer.privacy}
+            </a>
+            <a href="#" className="text-ink-500 hover:text-ink-300 text-[12px] transition-colors">
+              {t.footer.terms}
+            </a>
           </div>
         </div>
       </div>
