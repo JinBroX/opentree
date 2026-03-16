@@ -112,13 +112,17 @@ em { font-style: italic; color: var(--gold); }
 .logo {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  color: var(--gold);
   flex-shrink: 0;
+  line-height: 0;
 }
-.logo-icon { font-size: 1.2rem; color: var(--gold); }
+.logo img {
+  height: 38px;
+  width: auto;
+  display: block;
+}
+/* Legacy fallback */
+.logo-icon { display: none; }
+.logo-text { display: none; }
 .site-nav {
   display: flex;
   align-items: center;
@@ -169,6 +173,42 @@ em { font-style: italic; color: var(--gold); }
   width: 22px; height: 2px;
   background: var(--text);
   transition: all var(--transition);
+}
+
+/* ===== HERO LOGO & WATERMARK ===== */
+.hero-watermark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-watermark img {
+  width: min(55vw, 520px);
+  height: auto;
+  opacity: 0.06;
+  filter: brightness(10);
+}
+.hero-logo {
+  margin-bottom: 28px;
+}
+.hero-logo img {
+  height: 52px;
+  width: auto;
+  margin: 0 auto;
+  display: block;
+  filter: drop-shadow(0 2px 12px rgba(0,0,0,0.5));
+}
+
+/* About page logo */
+.about-logo {
+  margin-bottom: 28px;
+}
+.about-logo img {
+  height: 48px;
+  width: auto;
 }
 
 /* ===== HERO ===== */
@@ -640,7 +680,13 @@ em { font-style: italic; color: var(--gold); }
   gap: 40px;
   padding-bottom: 48px;
 }
-.footer-brand .logo { margin-bottom: 16px; }
+.footer-brand .logo img {
+  height: 34px;
+  width: auto;
+}
+.footer-brand .logo {
+  margin-bottom: 16px;
+}
 .footer-brand p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.7; max-width: 260px; }
 .footer-links h4 { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; font-family: var(--font-sans); }
 .footer-links a { display: block; color: var(--text-muted); font-size: 0.88rem; margin-bottom: 10px; transition: color var(--transition); }
