@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | OpenTree — Eastern Ritual Wellness</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="logo"><span class="logo-icon">&#9752;</span><span class="logo-text">OpenTree</span></a>
+      <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+      <nav class="site-nav" id="siteNav">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+      <button class="cart-btn" id="cartBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <p class="section-tag">Reach Out</p>
+      <h1>Contact Us</h1>
+      <p>We'd love to hear from you</p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <h2>Get in Touch</h2>
+        <p>Whether you have a question about a product, your order, or just want to connect — we're here for you. Our team responds within 24 hours.</p>
+        <div class="contact-item">
+          <strong>Email</strong>
+          <span>hello@opentree.cc</span>
+        </div>
+        <div class="contact-item">
+          <strong>Response Time</strong>
+          <span>Within 24 hours</span>
+        </div>
+        <div class="contact-item">
+          <strong>Follow Us</strong>
+          <span>@opentree.cc on Instagram & TikTok</span>
+        </div>
+      </div>
+      <form class="contact-form" id="contactForm">
+        <div class="form-group">
+          <label for="contactName">Your Name</label>
+          <input type="text" id="contactName" name="name" placeholder="Full name" required />
+        </div>
+        <div class="form-group">
+          <label for="contactEmail">Email Address</label>
+          <input type="email" id="contactEmail" name="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="contactSubject">Subject</label>
+          <input type="text" id="contactSubject" name="subject" placeholder="What is this about?" />
+        </div>
+        <div class="form-group">
+          <label for="contactMessage">Message</label>
+          <textarea id="contactMessage" name="message" rows="5" placeholder="Tell us how we can help..." required></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%">Send Message</button>
+        <p class="form-success" id="formSuccess" style="display:none; color: var(--accent); margin-top:12px; text-align:center;">Thank you! We'll be in touch soon.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand"><a href="index.html" class="logo"><span class="logo-icon">&#9752;</span><span class="logo-text">OpenTree</span></a><p>Eastern Ritual Wellness — where ancient energy meets modern life.</p></div>
+      <div class="footer-links"><h4>Navigate</h4><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+      <div class="footer-links"><h4>Help</h4><a href="#">Shipping Policy</a><a href="#">Returns</a><a href="#">Privacy Policy</a><a href="#">FAQ</a></div>
+      <div class="footer-social"><h4>Follow Us</h4><div class="social-icons"><a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a></div></div>
+    </div>
+    <div class="footer-bottom"><div class="container"><p>&copy; 2026 OpenTree. All rights reserved.</p></div></div>
+  </footer>
+
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header"><h3>Your Ritual Bag</h3><button class="cart-close" id="cartClose">&times;</button></div>
+    <div class="cart-items" id="cartItems"><p class="cart-empty">Your cart is empty.<br /><a href="shop.html">Explore the collection</a></p></div>
+    <div class="cart-footer" id="cartFooter" style="display:none"><div class="cart-total"><span>Total</span><span id="cartTotal">$0.00</span></div><a href="checkout.html" class="btn-primary cart-checkout-btn">Proceed to Checkout</a></div>
+  </div>
+
+  <script src="assets/js/products.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('formSuccess').style.display = 'block';
+      this.reset();
+    });
+  </script>
+</body>
+</html>
