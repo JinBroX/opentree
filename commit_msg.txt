@@ -1,1 +1,1 @@
-feat: initial OpenTree e-commerce website
+update: redesign UI, add i18n zh/en, integrate logo, fix syntax errors

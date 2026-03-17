@@ -30,7 +30,7 @@ export default function Footer() {
             <div className="flex items-center gap-2.5 mb-5">
               {/* Logo — inverted white version on dark bg */}
               <img
-                src="/opentree-logo.png"
+                src="/opentree-logo-02.png"
                 alt="OpenTree"
                 className="h-10 w-auto brightness-0 invert opacity-90"
               />

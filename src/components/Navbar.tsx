@@ -46,9 +46,9 @@ export default function Navbar() {
             <Link to="/" className="flex items-center gap-2.5 group flex-shrink-0">
               {/* Logo image — white filter when over hero, normal otherwise */}
               <img
-                src="/opentree-logo.png"
+                src="/opentree-logo-01.png"
                 alt="OpenTree"
-                className={`h-9 w-auto object-contain transition-all duration-300 ${
+                className={`h-9 lg:h-11 w-auto object-contain transition-all duration-300 ${
                   transparent
                     ? 'brightness-0 invert opacity-90'
                     : 'opacity-100'
