@@ -4,10 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>宽树 · 自然香道</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/main.css?v=5" />
+  <link rel="stylesheet" href="/css/products.css?v=4" />
 </head>
 <body>
 
@@ -21,10 +19,10 @@
       <img src="/assets/images/logo.png" alt="宽树" class="logo-img" />
     </a>
     <nav class="main-nav" id="main-nav">
-      <a href="#products" class="nav-link" data-page="products">香品</a>
-      <a href="#about" class="nav-link" data-page="about">关于宽树</a>
+      <a href="#scenes" class="nav-link" data-page="scenes">用香场景</a>
       <a href="#craft" class="nav-link" data-page="craft">制香工艺</a>
-    </nav>
+      <a href="#products" class="nav-link" data-page="products">香品系列</a>
+      <a href="#reviews" class="nav-link" data-page="reviews">用户心声</a>
     <div class="header-actions">
       <button class="icon-btn" id="cart-btn" aria-label="购物车">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
@@ -41,11 +39,13 @@
 <div class="nav-drawer" id="nav-drawer">
   <div class="drawer-overlay" id="drawer-overlay"></div>
   <div class="drawer-inner">
-    <a href="#products" class="drawer-link" onclick="closeDrawer()">香品</a>
-    <a href="#about" class="drawer-link" onclick="closeDrawer()">关于宽树</a>
+    <a href="#scenes" class="drawer-link" onclick="closeDrawer()">用香场景</a>
     <a href="#craft" class="drawer-link" onclick="closeDrawer()">制香工艺</a>
+    <a href="#products" class="drawer-link" onclick="closeDrawer()">香品系列</a>
+    <a href="#reviews" class="drawer-link" onclick="closeDrawer()">用户心声</a>
     <div class="drawer-divider"></div>
     <a href="#" class="drawer-link" onclick="closeDrawer(); showAuthModal()">登录 / 注册</a>
+    <a href="#" class="drawer-link" onclick="closeDrawer(); openCartSidebar()">🛒 我的购物车</a>
   </div>
 </div>
 
@@ -55,7 +55,7 @@
   <div class="sidebar-inner">
     <div class="sidebar-header">
       <h3>购物车</h3>
-      <button class="close-btn" onclick="closeCart()">
+      <button class="close-btn" onclick="closeCartSidebar()">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
@@ -86,12 +86,12 @@
       <div class="hero-smoke smoke-3"></div>
     </div>
     <div class="hero-content">
-      <p class="hero-eyebrow">自然 · 安静 · 呼吸</p>
+      <p class="hero-eyebrow">喜马拉雅高原陈化线香</p>
       <h1 class="hero-title">
-        <span class="title-line">让每一缕烟</span>
-        <span class="title-line accent">都值得停留</span>
+        <span class="title-line">宽树香品</span>
+        <span class="title-line accent">只看时间与好料</span>
       </h1>
-      <p class="hero-desc">宽树香品，精选天然香材，传承古法制香工艺，<br class="desktop-br"/>为当代生活注入一份安静的仪式感。</p>
+      <p class="hero-desc">全部选用喜马拉雅高原原生香材，<br class="desktop-br"/>高海拔生长，香脂沉积更充分，气息更干净。</p>
       <div class="hero-actions">
         <a href="#products" class="btn btn-primary">探索香品</a>
         <a href="#about" class="btn btn-ghost">了解宽树</a>
@@ -128,7 +128,7 @@
           </div>
           <div class="philosophy-card offset">
             <div class="card-stat">
-              <span class="stat-num">7+</span>
+              <span class="stat-num">17+</span>
               <span class="stat-label">年制香经验</span>
             </div>
           </div>
@@ -143,16 +143,43 @@
     </div>
   </section>
 
-  <!-- ─── 产品区域 ─── -->
-  <section class="products-section" id="products">
+  <!-- ─── 用香场景 ─── -->
+  <section class="scenes-section" id="scenes">
     <div class="container">
       <div class="section-header">
-        <span class="section-label">香品系列</span>
-        <h2 class="section-title">三款精选，各有灵魂</h2>
-        <p class="section-subtitle">每一款都经过数年打磨，选材、配方、工艺缺一不可</p>
+        <span class="section-label">用香场景</span>
+        <h2 class="section-title">从晨光到夜半<br class="mobile-br"/>香气始终在场</h2>
+        <p class="section-subtitle">一天之中，总有那么几个时刻，值得为一支香停留</p>
       </div>
-      <div class="products-grid" id="products-grid">
-        <!-- 产品卡片由JS动态渲染 -->
+      <div class="scenes-grid">
+        <div class="scene-card">
+          <div class="scene-img" style="background-image:url('/assets/images/scene-tea.jpg')"></div>
+          <div class="scene-label">
+            <h3>茶席 · 晨光</h3>
+            <p>清晨第一壶茶，配一支沉香<br/>用自然香气开启从容的一天</p>
+          </div>
+        </div>
+        <div class="scene-card">
+          <div class="scene-img" style="background-image:url('/assets/images/scene-study.jpg')"></div>
+          <div class="scene-label">
+            <h3>书房 · 静心</h3>
+            <p>读书、工作、冥想<br/>让香气成为专注力的催化剂</p>
+          </div>
+        </div>
+        <div class="scene-card">
+          <div class="scene-img" style="background-image:url('/assets/images/scene-evening.jpg')"></div>
+          <div class="scene-label">
+            <h3>傍晚 · 余韵</h3>
+            <p>日暮时分，一缕轻烟<br/>卸下一天的匆忙与疲惫</p>
+          </div>
+        </div>
+        <div class="scene-card">
+          <div class="scene-img" style="background-image:url('/assets/images/scene-night.jpg')"></div>
+          <div class="scene-label">
+            <h3>夜晚 · 安眠</h3>
+            <p>睡前一炷香，释放一天的疲惫<br/>让沉香守护你的深度睡眠</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -160,46 +187,107 @@
   <!-- ─── 制香工艺 ─── -->
   <section class="craft-section" id="craft">
     <div class="container">
-      <div class="section-header light">
+      <div class="section-header">
         <span class="section-label">制香工艺</span>
         <h2 class="section-title">慢工出细活</h2>
         <p class="section-subtitle">每支香背后，是数道繁复而认真的工序</p>
       </div>
-      <div class="craft-steps">
-        <div class="craft-step">
-          <div class="step-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    </div>
+      <div class="craft-grid">
+        <div class="craft-card">
+          <div class="craft-card-img" style="background-image:url('/assets/images/craft-origin.jpg')"></div>
+          <div class="craft-card-body">
+            <span class="craft-step-num">01</span>
+            <h4>原产地甄选</h4>
+            <p>深入越南、印度、云南等地，直接与香农合作，确保香材溯源可查。</p>
           </div>
-          <h4>原产地甄选</h4>
-          <p>深入越南、印度、云南等地，直接与香农合作，确保香材溯源可查。</p>
         </div>
-        <div class="craft-step">
-          <div class="step-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div class="craft-card">
+          <div class="craft-card-img" style="background-image:url('/assets/images/craft-grinding.jpg')"></div>
+          <div class="craft-card-body">
+            <span class="craft-step-num">02</span>
+            <h4>古法研磨</h4>
+            <p>石磨低温慢研，全程控温40°C以下，最大保留芳香分子与油脂。</p>
           </div>
-          <h4>古法研磨</h4>
-          <p>石磨低温慢研，全程控温40°C以下，最大保留芳香分子与油脂。</p>
         </div>
-        <div class="craft-step">
-          <div class="step-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div class="craft-card">
+          <div class="craft-card-img" style="background-image:url('/assets/images/craft-curing.jpg')"></div>
+          <div class="craft-card-body">
+            <span class="craft-step-num">03</span>
+            <h4>自然醒香</h4>
+            <p>成品恒温存放7至14天，让各香材充分融合，去除新制品的生涩气息。</p>
           </div>
-          <h4>无添加配方</h4>
-          <p>坚持不添加任何化学香精、定香剂及防腐剂，每一支都是真实的自然气息。</p>
         </div>
-        <div class="craft-step">
-          <div class="step-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg>
+        <div class="craft-card">
+          <div class="craft-card-img" style="background-image:url('/assets/images/craft-finished.jpg')"></div>
+          <div class="craft-card-body">
+            <span class="craft-step-num">04</span>
+            <h4>无添加配方</h4>
+            <p>坚持不添加任何化学香精、定香剂及防腐剂，每一支都是真实的自然气息。</p>
           </div>
-          <h4>自然醒香</h4>
-          <p>成品恒温存放7至14天，让各香材充分融合，去除新制品的生涩气息。</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ─── 香品系列 ─── -->
+  <section class="products-section" id="products">
+    <div class="container">
+
+      <div class="section-header">
+        <span class="section-label">香品系列</span>
+        <h2 class="section-title">三款精选，各有灵魂</h2>
+        <p class="section-subtitle">每一款都经过数年打磨，选材、配方、工艺缺一不可</p>
+      </div>
+      <!-- 三款产品卡片 -->
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-img-wrap"><img src="/assets/images/products/king.png" alt="国王｜沉稳香" loading="lazy"></div>
+          <div class="product-info">
+            <p class="product-subtitle">国王｜沉稳香</p>
+            <h3 class="product-name">清醇基础款</h3>
+            <p class="product-desc">气息稳定干净，日常耐闻不腻</p>
+            <div class="product-actions">
+              <span class="product-price">¥88</span>
+              <button class="btn btn-sm btn-outline" data-action="view" data-id="king-series">查看详情</button>
+              <button class="btn btn-sm" data-action="cart" data-id="king-series">加入购物车</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img-wrap"><img src="/assets/images/products/chuanshi.png" alt="船师｜舒展香" loading="lazy"></div>
+          <div class="product-info">
+            <p class="product-subtitle">船师｜舒展香</p>
+            <h3 class="product-name">陈韵典藏款</h3>
+            <p class="product-desc">层次展开自然，越闻越顺</p>
+            <div class="product-actions">
+              <span class="product-price">¥128</span>
+              <button class="btn btn-sm btn-outline" data-action="view" data-id="boat-series">查看详情</button>
+              <button class="btn btn-sm" data-action="cart" data-id="boat-series">加入购物车</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-img-wrap"><img src="/assets/images/products/mutong.png" alt="牧童｜清逸香" loading="lazy"></div>
+          <div class="product-info">
+            <p class="product-subtitle">牧童｜清逸香</p>
+            <h3 class="product-name">臻品老料款</h3>
+            <p class="product-desc">高年份老料，清透纯净</p>
+            <div class="product-actions">
+              <span class="product-price">¥188</span>
+              <button class="btn btn-sm btn-outline" data-action="view" data-id="mutong-series">查看详情</button>
+              <button class="btn btn-sm" data-action="cart" data-id="mutong-series">加入购物车</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ─── 用户评价 ─── -->
-  <section class="reviews-section">
+  <section class="reviews-section" id="reviews">
     <div class="container">
       <div class="section-header">
         <span class="section-label">用户心声</span>
@@ -230,15 +318,41 @@
             <span class="review-product">宽树·艾草净化香</span>
           </div>
         </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"送给长辈的礼物，包装精致有质感。老人家说这个香气跟以前寺庙里的不一样，更柔和更干净，很喜欢。"</p>
+          <div class="review-author">
+            <span class="author-name">王 · 北京</span>
+            <span class="review-product">宽树·沉香线香</span>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"朋友推荐的，一开始觉得价格不便宜，收到后点燃才知道什么叫物有所值。香灰落得很整齐，余香持久。"</p>
+          <div class="review-author">
+            <span class="author-name">张 · 上海</span>
+            <span class="review-product">宽树·檀香盘香</span>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"作为瑜伽冥想用香，艾草款的气息让人很放松，不像有些香太冲。燃一支足够一整个冥想时段。"</p>
+          <div class="review-author">
+            <span class="author-name">李 · 广州</span>
+            <span class="review-product">宽树·艾草净化香</span>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── 底部CTA ─── -->
+  <!-- ─── 底部收口 ─── -->
   <section class="cta-section">
     <div class="container">
-      <h2>为自己的日常，留一点香气</h2>
-      <p>现在下单，顺丰包邮，支持7天无理由退换</p>
+      <h2 class="cta-title-main">香的差别，不在复杂</h2>
+      <h2 class="cta-title-accent">在时间</h2>
+      <p class="cta-desc">从基础耐用，到层次展开，再到高年份老料<br/>你闻到的，是时间留下来的东西</p>
       <a href="#products" class="btn btn-primary btn-lg">立即选购</a>
     </div>
   </section>
@@ -324,12 +438,7 @@
 </div>
 
 <!-- ═══════════════ 弹窗：产品详情 ═══════════════ -->
-<div class="modal-overlay" id="product-modal" style="display:none">
-  <div class="modal product-modal" id="product-modal-content">
-    <!-- 内容由JS动态填充 -->
-  </div>
-</div>
-
+<div class="modal-overlay" id="product-modal">    <div class="modal-body" id="product-modal-body">      <!-- JS动态填充 -->    </div>  </div>
 <!-- ═══════════════ 弹窗：结算 ═══════════════ -->
 <div class="modal-overlay" id="checkout-modal" style="display:none">
   <div class="modal checkout-modal">
@@ -439,6 +548,7 @@
   </div>
 </div>
 
-<script src="/js/main.js"></script>
+<script src="/js/main.js?v=4"></script>
+    
 </body>
 </html>

@@ -1,0 +1,214 @@
+/* ═══════════════ OpenTree — Products ═══════════════ */
+
+/* ─── 产品卡片 ─── */
+.product-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
+.product-img-wrap { overflow: hidden; }
+.product-img-wrap img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  transition: transform 0.4s;
+  display: block;
+}
+.product-card:hover .product-img-wrap img { transform: scale(1.05); }
+.product-info { padding: 24px; }
+.product-subtitle {
+  font-size: 13px;
+  color: #8b7355;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.product-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: #2c2416;
+  margin-bottom: 8px;
+}
+.product-desc {
+  font-size: 14px;
+  color: #6b6156;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.product-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.product-price {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2c2416;
+  margin-right: auto;
+}
+
+/* ─── 产品弹窗（modal-overlay 样式由 main.css 提供） ─── */
+#product-modal { z-index: 1000; }
+#product-modal .modal-body {
+  background: #fff;
+  border-radius: 16px;
+  max-width: 860px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: pmFadeIn 0.25s ease;
+}
+@keyframes pmFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.modal-close-btn {
+  position: absolute;
+  top: 16px; right: 16px;
+  z-index: 10;
+  width: 36px; height: 36px;
+  border: none;
+  background: rgba(0,0,0,0.06);
+  border-radius: 50%;
+  font-size: 22px;
+  color: #666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.modal-close-btn:hover { background: rgba(0,0,0,0.12); }
+
+.pm-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 700px) {
+  .pm-layout { grid-template-columns: 1fr; }
+}
+.pm-img-wrap { overflow: hidden; }
+.pm-img-wrap img {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  object-fit: cover;
+  display: block;
+}
+.pm-info {
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.pm-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #f5f0e8;
+  color: #8b7355;
+  border-radius: 20px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  align-self: flex-start;
+}
+.pm-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #2c2416;
+  margin: 4px 0 0;
+}
+.pm-subtitle { font-size: 14px; color: #8b7355; margin: 0; }
+.pm-desc { font-size: 15px; color: #5a5045; line-height: 1.7; margin: 4px 0; }
+.pm-details {
+  background: #faf7f2;
+  border-radius: 12px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 4px 0;
+}
+@media (max-width: 700px) { .pm-details { grid-template-columns: 1fr; } }
+.pm-detail { display: flex; flex-direction: column; gap: 4px; }
+.pm-dl { font-size: 12px; color: #8b7355; letter-spacing: 1px; }
+.pm-dv { font-size: 14px; color: #2c2416; line-height: 1.5; }
+.pm-price {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2c2416;
+  margin: 8px 0 0;
+}
+.pm-unit { font-size: 14px; font-weight: 400; color: #8b7355; }
+.pm-qty-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 14px;
+  color: #5a5045;
+}
+.pm-qty-ctrl {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e0d8cc;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.pm-qty-btn {
+  width: 36px; height: 36px;
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  color: #2c2416;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.pm-qty-btn:hover { background: #f5f0e8; }
+.pm-qty-num {
+  width: 40px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: #2c2416;
+}
+.pm-add-btn {
+  margin-top: 8px;
+  padding: 14px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  background: #2c2416;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+.pm-add-btn:hover { background: #1a1408; }
+.pm-add-btn:active { transform: scale(0.97); }
+
+/* ─── Toast ─── */
+.ot-toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #2c2416;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-size: 14px;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+.ot-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
