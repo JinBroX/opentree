@@ -81,6 +81,8 @@ input, textarea, select { font-family: inherit; font-size: 1rem; }
   border: 1.5px solid var(--accent);
 }
 .btn-ghost:hover { background: var(--accent); color: var(--white); }
+.hero .btn-ghost { color: var(--white); border-color: rgba(255,255,255,0.75); }
+.hero .btn-ghost:hover { border-color: var(--white); }
 .btn-ghost-light {
   background: transparent;
   color: var(--white);
