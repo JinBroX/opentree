@@ -9,63 +9,94 @@ const state = {
   modalQty: 1
 };
 
-/* ═══════════════ PRODUCTS DATA ═══════════════ */
+/* ═══════════════ PRODUCTS DATA (bilingual) ═══════════════ */
 const INLINE_PRODUCTS = [
   {
     id: "king-series",
-    name: "国王｜沉稳香",
-    subtitle: "清醇基础款 · 日用标杆",
-    badge: "基础款",
+    name_cn: "国王｜沉稳香", name_en: "The King · Steady",
+    subtitle_cn: "清醇基础款 · 日用标杆", subtitle_en: "Clean Base · Daily Standard",
+    badge_cn: "基础款", badge_en: "Essential",
     price: 88,
-    unit: "4mm × 10cm 手工线香",
+    unit_cn: "4mm × 10cm 手工线香", unit_en: "4mm × 10cm Hand-rolled Incense",
     image: "/assets/images/products/king.png",
-    intro: "一款适合长期使用的基础标杆香。气息稳定，不挑环境，是日常点香最安心的一款。",
-    material: "喜马拉雅高原基础香材<br/>自然陈化，使香气由燥转润",
-    blend: "结构简洁，以稳定为主<br/>不做复杂叠加，确保耐闻度",
-    spec: "4mm × 10cm 手工线香<br/>香体敦实，燃烧均匀",
-    scent: "干净、克制、稳定<br/>久闻不腻"
+    intro_cn: "一款适合长期使用的基础标杆香。气息稳定，不挑环境，是日常点香最安心的一款。",
+    intro_en: "A foundational incense for everyday use. Stable, versatile, and reliable — the most reassuring stick for daily burning.",
+    material_cn: "喜马拉雅高原基础香材<br/>自然陈化，使香气由燥转润",
+    material_en: "Himalayan highland base materials<br/>Naturally aged to smooth and round out the aroma",
+    blend_cn: "结构简洁，以稳定为主<br/>不做复杂叠加，确保耐闻度",
+    blend_en: "Simple structure focused on stability<br/>No over-complication — built for lasting appeal",
+    spec_cn: "4mm × 10cm 手工线香<br/>香体敦实，燃烧均匀",
+    spec_en: "4mm × 10cm Hand-rolled<br/>Dense body, even burn",
+    scent_cn: "干净、克制、稳定<br/>久闻不腻",
+    scent_en: "Clean, restrained, steady<br/>Never tires the nose"
   },
   {
     id: "boat-series",
-    name: "船师｜舒展香",
-    subtitle: "陈韵典藏款 · 层次进阶",
-    badge: "进阶款",
+    name_cn: "船师｜舒展香", name_en: "The Boatmaster · Unfolding",
+    subtitle_cn: "陈韵典藏款 · 层次进阶", subtitle_en: "Aged Reserve · Layered Depth",
+    badge_cn: "进阶款", badge_en: "Advanced",
     price: 128,
-    unit: "4mm × 10cm 手工线香",
+    unit_cn: "4mm × 10cm 手工线香", unit_en: "4mm × 10cm Hand-rolled Incense",
     image: "/assets/images/products/chuanshi.png",
-    intro: "在基础香之上增加层次结构。适合需要放松、长时间停留的空间。",
-    material: "多种高原陈化老料<br/>陈化时间更长，融合更自然",
-    blend: "多层结构，逐步展开<br/>前后过渡自然",
-    spec: "4mm × 10cm 手工线香<br/>密度更高，燃烧更稳",
-    scent: "温润舒展，层次清晰<br/>越闻越顺"
+    intro_cn: "在基础香之上增加层次结构。适合需要放松、长时间停留的空间。",
+    intro_en: "Adds structural layers beyond the basics. Ideal for spaces where you want to unwind and linger.",
+    material_cn: "多种高原陈化老料<br/>陈化时间更长，融合更自然",
+    material_en: "Multiple highland aged materials<br/>Longer aging for more natural blending",
+    blend_cn: "多层结构，逐步展开<br/>前后过渡自然",
+    blend_en: "Multi-layered, unfolding gradually<br/>Seamless transitions from start to finish",
+    spec_cn: "4mm × 10cm 手工线香<br/>密度更高，燃烧更稳",
+    spec_en: "4mm × 10cm Hand-rolled<br/>Higher density, steadier burn",
+    scent_cn: "温润舒展，层次清晰<br/>越闻越顺",
+    scent_en: "Warm and expansive, clearly layered<br/>Grows smoother with each breath"
   },
   {
     id: "mutong-series",
-    name: "牧童｜清逸香",
-    subtitle: "臻品老料款 · 高年份",
-    badge: "臻品款",
+    name_cn: "牧童｜清逸香", name_en: "The Shepherd · Clarity",
+    subtitle_cn: "臻品老料款 · 高年份", subtitle_en: "Rare Reserve · High Vintage",
+    badge_cn: "臻品款", badge_en: "Connoisseur",
     price: 188,
-    unit: "4mm × 10cm 手工线香",
+    unit_cn: "4mm × 10cm 手工线香", unit_en: "4mm × 10cm Hand-rolled Incense",
     image: "/assets/images/products/mutong.png",
-    intro: "以高年份老料为核心的顶配版本。香气不靠浓，而靠纯净与时间。",
-    material: "高年份稀缺老料<br/>长期自然陈化，存量有限",
-    blend: "以老料为主导<br/>减少人为干预",
-    spec: "4mm × 10cm 手工线香<br/>高密度，燃烧安静",
-    scent: "清透、干净、细腻<br/>尾韵悠长"
+    intro_cn: "以高年份老料为核心的顶配版本。香气不靠浓，而靠纯净与时间。",
+    intro_en: "A top-tier edition built around high-vintage aged materials. The aroma relies not on intensity, but on purity and time.",
+    material_cn: "高年份稀缺老料<br/>长期自然陈化，存量有限",
+    material_en: "Rare high-vintage aged materials<br/>Long-term natural aging, limited stock",
+    blend_cn: "以老料为主导<br/>减少人为干预",
+    blend_en: "Aged materials take the lead<br/>Minimal human intervention",
+    spec_cn: "4mm × 10cm 手工线香<br/>高密度，燃烧安静",
+    spec_en: "4mm × 10cm Hand-rolled<br/>High density, burns in silence",
+    scent_cn: "清透、干净、细腻<br/>尾韵悠长",
+    scent_en: "Clear, pure, delicate<br/>A long, lingering finish"
   }
 ];
+
+/* ═══════════════ HELPERS ═══════════════ */
+function productField(p, field) {
+  var key = field + '_' + currentLang;
+  return p[key] || p[field + '_cn'] || '';
+}
+
+function pName(p) { return productField(p, 'name'); }
+function pSubtitle(p) { return productField(p, 'subtitle'); }
+function pBadge(p) { return productField(p, 'badge'); }
+function pUnit(p) { return productField(p, 'unit'); }
+function pIntro(p) { return productField(p, 'intro'); }
+function pMaterial(p) { return productField(p, 'material'); }
+function pBlend(p) { return productField(p, 'blend'); }
+function pSpec(p) { return productField(p, 'spec'); }
+function pScent(p) { return productField(p, 'scent'); }
 
 /* ═══════════════ INIT ═══════════════ */
 document.addEventListener('DOMContentLoaded', function () {
   state.products = INLINE_PRODUCTS;
   initCartFromStorage();
   renderCartBadge();
+  renderProductCards();
   bindEvents();
 });
 
 /* ═══════════════ EVENTS ═══════════════ */
 function bindEvents() {
-  // 产品卡片按钮 - 事件委托
   document.addEventListener('click', function (e) {
     var btn = e.target.closest('[data-action]');
     if (!btn) return;
@@ -75,13 +106,11 @@ function bindEvents() {
     if (action === 'cart') addToCart(id);
   });
 
-  // 购物车按钮
   var cartBtn = document.getElementById('cart-btn');
   var cartOverlay = document.getElementById('cart-overlay');
   if (cartBtn) cartBtn.addEventListener('click', openCartSidebar);
   if (cartOverlay) cartOverlay.addEventListener('click', closeCartSidebar);
 
-  // ESC 关闭
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
       closeProductModal();
@@ -89,7 +118,6 @@ function bindEvents() {
     }
   });
 
-  // 点击遮罩关闭弹窗
   var productModal = document.getElementById('product-modal');
   if (productModal) {
     productModal.addEventListener('click', function (e) {
@@ -97,11 +125,35 @@ function bindEvents() {
     });
   }
 
-  // 移动端抽屉导航
   var navToggle = document.getElementById("nav-toggle");
   var drawerOverlay = document.getElementById("drawer-overlay");
   if (navToggle) navToggle.addEventListener("click", openDrawer);
   if (drawerOverlay) drawerOverlay.addEventListener("click", closeDrawer);
+
+  document.addEventListener('langChanged', function () {
+    renderProductCards();
+  });
+}
+
+/* ═══════════════ PRODUCT CARDS ═══════════════ */
+function renderProductCards() {
+  var grid = document.getElementById('products-grid');
+  if (!grid) return;
+  grid.innerHTML = state.products.map(function (p) {
+    return '<div class="product-card">' +
+      '<div class="product-img-wrap"><img src="' + p.image + '" alt="' + pName(p) + '" loading="lazy"></div>' +
+      '<div class="product-info">' +
+        '<p class="product-subtitle">' + pName(p) + '</p>' +
+        '<h3 class="product-name">' + pSubtitle(p) + '</h3>' +
+        '<p class="product-desc">' + pIntro(p).substring(0, 30) + '</p>' +
+        '<div class="product-actions">' +
+          '<span class="product-price">¥' + p.price + '</span>' +
+          '<button class="btn btn-sm btn-outline" data-action="view" data-id="' + p.id + '">' + t('btn_view_detail') + '</button>' +
+          '<button class="btn btn-sm" data-action="cart" data-id="' + p.id + '">' + t('btn_add_cart') + '</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
 }
 
 /* ═══════════════ CART ═══════════════ */
@@ -137,16 +189,17 @@ function saveCart() {
 function addToCart(productId) {
   var product = state.products.find(function(p) { return p.id === productId; });
   if (!product) return;
+  var name = pName(product);
   var exist = state.cart.items.find(function(i) { return i.id === productId; });
   if (exist) {
     exist.quantity += 1;
   } else {
-    state.cart.items.push({ id: product.id, name: product.name, price: product.price, quantity: 1 });
+    state.cart.items.push({ id: product.id, name: name, price: product.price, quantity: 1 });
   }
   state.cart.total = state.cart.items.reduce(function(s, i) { return s + i.price * i.quantity; }, 0);
   saveCart();
   renderCartBadge();
-  showToast('已加入: ' + product.name);
+  showToast(t('toast_added') + name);
 }
 
 function removeFromCart(productId) {
@@ -191,19 +244,19 @@ function renderCartItems() {
   var totalEl = document.getElementById('cart-total-price');
   if (!container) return;
   if (state.cart.items.length === 0) {
-    container.innerHTML = '<div class="cart-empty"><p>购物车是空的</p></div>';
+    container.innerHTML = '<div class="cart-empty"><p>' + t('cart_empty') + '</p></div>';
     if (empty) empty.style.display = 'block';
     if (footer) footer.style.display = 'none';
     return;
   }
   if (empty) empty.style.display = 'none';
   if (footer) footer.style.display = 'block';
-  if (totalEl) totalEl.textContent = '\u00a5' + state.cart.total;
+  if (totalEl) totalEl.textContent = '¥' + state.cart.total;
   container.innerHTML = state.cart.items.map(function(item) {
     return '<div class="cart-item">' +
-      '<div class="cart-item-info"><p class="cart-item-name">' + item.name + '</p><p class="cart-item-price">\u00a5' + item.price + '</p></div>' +
-      '<div class="cart-item-actions"><span class="qty">\u00d7' + item.quantity + '</span>' +
-      '<button class="btn-remove" data-remove="' + item.id + '">删除</button></div></div>';
+      '<div class="cart-item-info"><p class="cart-item-name">' + item.name + '</p><p class="cart-item-price">¥' + item.price + '</p></div>' +
+      '<div class="cart-item-actions"><span class="qty">×' + item.quantity + '</span>' +
+      '<button class="btn-remove" data-remove="' + item.id + '">' + t('cart_remove') + '</button></div></div>';
   }).join('');
   container.querySelectorAll('[data-remove]').forEach(function(btn) {
     btn.addEventListener('click', function() { removeFromCart(btn.dataset.remove); });
@@ -220,36 +273,34 @@ function openProduct(productId) {
   if (!modal || !body) return;
 
   body.innerHTML =
-    '<button class="modal-close-btn" id="pm-close-btn">\u00d7</button>' +
+    '<button class="modal-close-btn" id="pm-close-btn">' + t('pd_close') + '</button>' +
     '<div class="pm-layout">' +
-      '<div class="pm-img-wrap"><img src="' + product.image + '" alt="' + product.name + '"></div>' +
+      '<div class="pm-img-wrap"><img src="' + product.image + '" alt="' + pName(product) + '"></div>' +
       '<div class="pm-info">' +
-        '<span class="pm-badge">' + (product.badge || '') + '</span>' +
-        '<h2 class="pm-title">' + product.name + '</h2>' +
-        '<p class="pm-subtitle">' + product.subtitle + '</p>' +
-        '<p class="pm-desc">' + product.intro + '</p>' +
+        '<span class="pm-badge">' + pBadge(product) + '</span>' +
+        '<h2 class="pm-title">' + pName(product) + '</h2>' +
+        '<p class="pm-subtitle">' + pSubtitle(product) + '</p>' +
+        '<p class="pm-desc">' + pIntro(product) + '</p>' +
         '<div class="pm-details">' +
-          '<div class="pm-detail"><span class="pm-dl">原料与陈化</span><span class="pm-dv">' + product.material + '</span></div>' +
-          '<div class="pm-detail"><span class="pm-dl">配比方式</span><span class="pm-dv">' + product.blend + '</span></div>' +
-          '<div class="pm-detail"><span class="pm-dl">形制规格</span><span class="pm-dv">' + product.spec + '</span></div>' +
-          '<div class="pm-detail"><span class="pm-dl">气味表现</span><span class="pm-dv">' + product.scent + '</span></div>' +
+          '<div class="pm-detail"><span class="pm-dl">' + t('pd_material') + '</span><span class="pm-dv">' + pMaterial(product) + '</span></div>' +
+          '<div class="pm-detail"><span class="pm-dl">' + t('pd_blend') + '</span><span class="pm-dv">' + pBlend(product) + '</span></div>' +
+          '<div class="pm-detail"><span class="pm-dl">' + t('pd_spec') + '</span><span class="pm-dv">' + pSpec(product) + '</span></div>' +
+          '<div class="pm-detail"><span class="pm-dl">' + t('pd_scent') + '</span><span class="pm-dv">' + pScent(product) + '</span></div>' +
         '</div>' +
-        '<div class="pm-price">\u00a5' + product.price + '<span class="pm-unit">/ 盒</span></div>' +
+        '<div class="pm-price">¥' + product.price + '<span class="pm-unit">' + t('pd_per_box') + '</span></div>' +
         '<div class="pm-qty-row">' +
-          '<span>数量</span>' +
+          '<span>' + t('pd_qty') + '</span>' +
           '<div class="pm-qty-ctrl">' +
             '<button class="pm-qty-btn" id="pm-qty-minus">−</button>' +
             '<span class="pm-qty-num" id="pm-qty-num">1</span>' +
             '<button class="pm-qty-btn" id="pm-qty-plus">+</button>' +
           '</div>' +
         '</div>' +
-        '<button class="btn btn-primary pm-add-btn" data-action="cart" data-id="' + product.id + '">加入购物车</button>' +
+        '<button class="btn btn-primary pm-add-btn" data-action="cart" data-id="' + product.id + '">' + t('btn_add_cart') + '</button>' +
       '</div>' +
     '</div>';
 
-  // 关闭按钮
   document.getElementById('pm-close-btn').addEventListener('click', closeProductModal);
-  // 数量控制
   document.getElementById('pm-qty-minus').addEventListener('click', function() {
     if (state.modalQty > 1) { state.modalQty--; document.getElementById('pm-qty-num').textContent = state.modalQty; }
   });

@@ -12,23 +12,29 @@
 <!-- ═══════════════ 顶部导航 ═══════════════ -->
 <header id="site-header">
   <div class="header-inner">
-    <button class="nav-toggle" id="nav-toggle" aria-label="菜单">
+    <button class="nav-toggle" id="nav-toggle" aria-label="菜单" data-i18n-ph="menu">
       <span></span><span></span><span></span>
     </button>
     <a href="/" class="logo-link">
       <img src="/assets/images/logo.png" alt="宽树" class="logo-img" />
     </a>
     <nav class="main-nav" id="main-nav">
-      <a href="#scenes" class="nav-link" data-page="scenes">用香场景</a>
-      <a href="#craft" class="nav-link" data-page="craft">制香工艺</a>
-      <a href="#products" class="nav-link" data-page="products">香品系列</a>
-      <a href="#reviews" class="nav-link" data-page="reviews">用户心声</a>
+      <a href="#scenes" class="nav-link" data-page="scenes" data-i18n="nav_scenes">用香场景</a>
+      <a href="#craft" class="nav-link" data-page="craft" data-i18n="nav_craft">制香工艺</a>
+      <a href="#products" class="nav-link" data-page="products" data-i18n="nav_products">香品系列</a>
+      <a href="#reviews" class="nav-link" data-page="reviews" data-i18n="nav_reviews">用户心声</a>
+    </nav>
     <div class="header-actions">
-      <button class="icon-btn" id="cart-btn" aria-label="购物车">
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="cn" onclick="switchLang('cn')">中</button>
+        <span class="lang-sep">/</span>
+        <button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
+      </div>
+      <button class="icon-btn" id="cart-btn" aria-label="购物车" data-i18n-ph="cart_aria">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
         <span class="cart-badge" id="cart-badge" style="display:none">0</span>
       </button>
-      <button class="icon-btn" id="user-btn" aria-label="用户">
+      <button class="icon-btn" id="user-btn" aria-label="用户" data-i18n-ph="user_aria">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
       </button>
     </div>
@@ -39,13 +45,13 @@
 <div class="nav-drawer" id="nav-drawer">
   <div class="drawer-overlay" id="drawer-overlay"></div>
   <div class="drawer-inner">
-    <a href="#scenes" class="drawer-link" onclick="closeDrawer()">用香场景</a>
-    <a href="#craft" class="drawer-link" onclick="closeDrawer()">制香工艺</a>
-    <a href="#products" class="drawer-link" onclick="closeDrawer()">香品系列</a>
-    <a href="#reviews" class="drawer-link" onclick="closeDrawer()">用户心声</a>
+    <a href="#scenes" class="drawer-link" onclick="closeDrawer()" data-i18n="nav_scenes">用香场景</a>
+    <a href="#craft" class="drawer-link" onclick="closeDrawer()" data-i18n="nav_craft">制香工艺</a>
+    <a href="#products" class="drawer-link" onclick="closeDrawer()" data-i18n="nav_products">香品系列</a>
+    <a href="#reviews" class="drawer-link" onclick="closeDrawer()" data-i18n="nav_reviews">用户心声</a>
     <div class="drawer-divider"></div>
-    <a href="#" class="drawer-link" onclick="closeDrawer(); showAuthModal()">登录 / 注册</a>
-    <a href="#" class="drawer-link" onclick="closeDrawer(); openCartSidebar()">🛒 我的购物车</a>
+    <a href="#" class="drawer-link" onclick="closeDrawer(); showAuthModal()" data-i18n="nav_login">登录 / 注册</a>
+    <a href="#" class="drawer-link" onclick="closeDrawer(); openCartSidebar()" data-i18n="nav_cart">🛒 我的购物车</a>
   </div>
 </div>
 
@@ -54,23 +60,23 @@
   <div class="sidebar-overlay" id="cart-overlay"></div>
   <div class="sidebar-inner">
     <div class="sidebar-header">
-      <h3>购物车</h3>
+      <h3 data-i18n="cart_title">购物车</h3>
       <button class="close-btn" onclick="closeCartSidebar()">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
     <div class="cart-items" id="cart-items">
       <div class="cart-empty" id="cart-empty">
-        <p>购物车是空的</p>
-        <p class="sub">去选择一款心仪的香品吧</p>
+        <p data-i18n="cart_empty">购物车是空的</p>
+        <p class="sub" data-i18n="cart_empty_sub">去选择一款心仪的香品吧</p>
       </div>
     </div>
     <div class="cart-footer" id="cart-footer" style="display:none">
       <div class="cart-total">
-        <span>合计</span>
+        <span data-i18n="cart_total">合计</span>
         <span id="cart-total-price">¥0</span>
       </div>
-      <button class="btn btn-primary full-width" onclick="goCheckout()">去结算</button>
+      <button class="btn btn-primary full-width" onclick="goCheckout()" data-i18n="cart_checkout">去结算</button>
     </div>
   </div>
 </div>
@@ -87,16 +93,16 @@
     </div>
     <div class="hero-content">
       <h1 class="hero-title">
-        <span class="title-line">宽树香品</span>
-        <span class="title-line accent">只看时间与好料</span>
+        <span class="title-line" data-i18n="hero_title_1">宽树香品</span>
+        <span class="title-line accent" data-i18n="hero_title_2">只看时间与好料</span>
       </h1>
       <div class="hero-actions">
-        <a href="#products" class="btn btn-primary">探索香品</a>
-        <a href="#about" class="btn btn-ghost">了解宽树</a>
+        <a href="#products" class="btn btn-primary" data-i18n="hero_cta_1">探索香品</a>
+        <a href="#about" class="btn btn-ghost" data-i18n="hero_cta_2">了解宽树</a>
       </div>
     </div>
     <div class="hero-scroll-hint">
-      <span>向下探索</span>
+      <span data-i18n="hero_scroll">向下探索</span>
       <svg width="16" height="24" viewBox="0 0 16 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 4v16M2 14l6 6 6-6"/></svg>
     </div>
   </section>
@@ -106,34 +112,34 @@
     <div class="container">
       <div class="philosophy-grid">
         <div class="philosophy-text">
-          <span class="section-label">关于宽树</span>
-          <h2 class="section-title">以树之宽，<br/>容纳万物之静</h2>
-          <p class="body-text">宽树，取意于"宽容如树"——树木以根深厚德，以枝广纳阴，以香馈赠天地。</p>
-          <p class="body-text">我们相信，一支好香不只是气味，它是一种态度，是在喧嚣日常里为自己辟出的安静角落。宽树的每一款香品，都经历从原料甄选、古法研磨到手工成型的完整工艺，只为将那份真实的自然气息，完整地送入你的呼吸。</p>
+          <span class="section-label" data-i18n="about_label">关于宽树</span>
+          <h2 class="section-title" data-i18n="about_title">以树之宽，<br/>容纳万物之静</h2>
+          <p class="body-text" data-i18n="about_body_1">宽树，取意于"宽容如树"——树木以根深厚德，以枝广纳阴，以香馈赠天地。</p>
+          <p class="body-text" data-i18n="about_body_2">我们相信，一支好香不只是气味，它是一种态度，是在喧嚣日常里为自己辟出的安静角落。宽树的每一款香品，都经历从原料甄选、古法研磨到手工成型的完整工艺，只为将那份真实的自然气息，完整地送入你的呼吸。</p>
           <div class="philosophy-tags">
-            <span class="tag">纯天然原料</span>
-            <span class="tag">无化学添加</span>
-            <span class="tag">手工制作</span>
-            <span class="tag">古法工艺</span>
+            <span class="tag" data-i18n="about_tag_1">纯天然原料</span>
+            <span class="tag" data-i18n="about_tag_2">无化学添加</span>
+            <span class="tag" data-i18n="about_tag_3">手工制作</span>
+            <span class="tag" data-i18n="about_tag_4">古法工艺</span>
           </div>
         </div>
         <div class="philosophy-visual">
           <div class="philosophy-card">
             <div class="card-stat">
-              <span class="stat-num">100%</span>
-              <span class="stat-label">天然香材</span>
+              <span class="stat-num" data-i18n="about_stat_1_num">100%</span>
+              <span class="stat-label" data-i18n="about_stat_1_label">天然香材</span>
             </div>
           </div>
           <div class="philosophy-card offset">
             <div class="card-stat">
-              <span class="stat-num">17+</span>
-              <span class="stat-label">年制香经验</span>
+              <span class="stat-num" data-i18n="about_stat_2_num">17+</span>
+              <span class="stat-label" data-i18n="about_stat_2_label">年制香经验</span>
             </div>
           </div>
           <div class="philosophy-card">
             <div class="card-stat">
-              <span class="stat-num">0</span>
-              <span class="stat-label">化学添加物</span>
+              <span class="stat-num" data-i18n="about_stat_3_num">0</span>
+              <span class="stat-label" data-i18n="about_stat_3_label">化学添加物</span>
             </div>
           </div>
         </div>
@@ -145,37 +151,37 @@
   <section class="scenes-section" id="scenes">
     <div class="container">
       <div class="section-header">
-        <span class="section-label">用香场景</span>
-        <h2 class="section-title">从晨光到夜半<br class="mobile-br"/>香气始终在场</h2>
-        <p class="section-subtitle">一天之中，总有那么几个时刻，值得为一支香停留</p>
+        <span class="section-label" data-i18n="scenes_label">用香场景</span>
+        <h2 class="section-title" data-i18n="scenes_title">从晨光到夜半<br class="mobile-br"/>香气始终在场</h2>
+        <p class="section-subtitle" data-i18n="scenes_subtitle">一天之中，总有那么几个时刻，值得为一支香停留</p>
       </div>
       <div class="scenes-grid">
         <div class="scene-card">
           <div class="scene-img" style="background-image:url('/assets/images/scene-tea.jpg')"></div>
           <div class="scene-label">
-            <h3>茶席 · 晨光</h3>
-            <p>清晨第一壶茶，配一支沉香<br/>用自然香气开启从容的一天</p>
+            <h3 data-i18n="scene_1_title">茶席 · 晨光</h3>
+            <p data-i18n="scene_1_desc">清晨第一壶茶，配一支沉香<br/>用自然香气开启从容的一天</p>
           </div>
         </div>
         <div class="scene-card">
           <div class="scene-img" style="background-image:url('/assets/images/scene-study.jpg')"></div>
           <div class="scene-label">
-            <h3>书房 · 静心</h3>
-            <p>读书、工作、冥想<br/>让香气成为专注力的催化剂</p>
+            <h3 data-i18n="scene_2_title">书房 · 静心</h3>
+            <p data-i18n="scene_2_desc">读书、工作、冥想<br/>让香气成为专注力的催化剂</p>
           </div>
         </div>
         <div class="scene-card">
           <div class="scene-img" style="background-image:url('/assets/images/scene-evening.jpg')"></div>
           <div class="scene-label">
-            <h3>傍晚 · 余韵</h3>
-            <p>日暮时分，一缕轻烟<br/>卸下一天的匆忙与疲惫</p>
+            <h3 data-i18n="scene_3_title">傍晚 · 余韵</h3>
+            <p data-i18n="scene_3_desc">日暮时分，一缕轻烟<br/>卸下一天的匆忙与疲惫</p>
           </div>
         </div>
         <div class="scene-card">
           <div class="scene-img" style="background-image:url('/assets/images/scene-night.jpg')"></div>
           <div class="scene-label">
-            <h3>夜晚 · 安眠</h3>
-            <p>睡前一炷香，释放一天的疲惫<br/>让沉香守护你的深度睡眠</p>
+            <h3 data-i18n="scene_4_title">夜晚 · 安眠</h3>
+            <p data-i18n="scene_4_desc">睡前一炷香，释放一天的疲惫<br/>让沉香守护你的深度睡眠</p>
           </div>
         </div>
       </div>
@@ -186,9 +192,9 @@
   <section class="craft-section" id="craft">
     <div class="container">
       <div class="section-header">
-        <span class="section-label">制香工艺</span>
-        <h2 class="section-title">慢工出细活</h2>
-        <p class="section-subtitle">每支香背后，是数道繁复而认真的工序</p>
+        <span class="section-label" data-i18n="craft_label">制香工艺</span>
+        <h2 class="section-title" data-i18n="craft_title">慢工出细活</h2>
+        <p class="section-subtitle" data-i18n="craft_subtitle">每支香背后，是数道繁复而认真的工序</p>
       </div>
     </div>
       <div class="craft-grid">
@@ -196,32 +202,32 @@
           <div class="craft-card-img" style="background-image:url('/assets/images/craft-origin.jpg')"></div>
           <div class="craft-card-body">
             <span class="craft-step-num">01</span>
-            <h4>原产地甄选</h4>
-            <p>深入越南、印度、云南等地，直接与香农合作，确保香材溯源可查。</p>
+            <h4 data-i18n="craft_1_title">原产地甄选</h4>
+            <p data-i18n="craft_1_desc">深入越南、印度、云南等地，直接与香农合作，确保香材溯源可查。</p>
           </div>
         </div>
         <div class="craft-card">
           <div class="craft-card-img" style="background-image:url('/assets/images/craft-grinding.jpg')"></div>
           <div class="craft-card-body">
             <span class="craft-step-num">02</span>
-            <h4>古法研磨</h4>
-            <p>石磨低温慢研，全程控温40°C以下，最大保留芳香分子与油脂。</p>
+            <h4 data-i18n="craft_2_title">古法研磨</h4>
+            <p data-i18n="craft_2_desc">石磨低温慢研，全程控温40°C以下，最大保留芳香分子与油脂。</p>
           </div>
         </div>
         <div class="craft-card">
           <div class="craft-card-img" style="background-image:url('/assets/images/craft-curing.jpg')"></div>
           <div class="craft-card-body">
             <span class="craft-step-num">03</span>
-            <h4>自然醒香</h4>
-            <p>成品恒温存放7至14天，让各香材充分融合，去除新制品的生涩气息。</p>
+            <h4 data-i18n="craft_3_title">自然醒香</h4>
+            <p data-i18n="craft_3_desc">成品恒温存放7至14天，让各香材充分融合，去除新制品的生涩气息。</p>
           </div>
         </div>
         <div class="craft-card">
           <div class="craft-card-img" style="background-image:url('/assets/images/craft-finished.jpg')"></div>
           <div class="craft-card-body">
             <span class="craft-step-num">04</span>
-            <h4>无添加配方</h4>
-            <p>坚持不添加任何化学香精、定香剂及防腐剂，每一支都是真实的自然气息。</p>
+            <h4 data-i18n="craft_4_title">无添加配方</h4>
+            <p data-i18n="craft_4_desc">坚持不添加任何化学香精、定香剂及防腐剂，每一支都是真实的自然气息。</p>
           </div>
         </div>
       </div>
@@ -231,56 +237,14 @@
   <!-- ─── 香品系列 ─── -->
   <section class="products-section" id="products">
     <div class="container">
-
       <div class="section-header">
-        <span class="section-label">香品系列</span>
-        <h2 class="section-title">三款精选，各有灵魂</h2>
-        <p class="section-subtitle">每一款都经过数年打磨，选材、配方、工艺缺一不可</p>
+        <span class="section-label" data-i18n="products_label">香品系列</span>
+        <h2 class="section-title" data-i18n="products_title">三款精选，各有灵魂</h2>
+        <p class="section-subtitle" data-i18n="products_subtitle">每一款都经过数年打磨，选材、配方、工艺缺一不可</p>
       </div>
-      <!-- 三款产品卡片 -->
-      <div class="products-grid">
-        <div class="product-card">
-          <div class="product-img-wrap"><img src="/assets/images/products/king.png" alt="国王｜沉稳香" loading="lazy"></div>
-          <div class="product-info">
-            <p class="product-subtitle">国王｜沉稳香</p>
-            <h3 class="product-name">清醇基础款</h3>
-            <p class="product-desc">气息稳定干净，日常耐闻不腻</p>
-            <div class="product-actions">
-              <span class="product-price">¥88</span>
-              <button class="btn btn-sm btn-outline" data-action="view" data-id="king-series">查看详情</button>
-              <button class="btn btn-sm" data-action="cart" data-id="king-series">加入购物车</button>
-            </div>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-img-wrap"><img src="/assets/images/products/chuanshi.png" alt="船师｜舒展香" loading="lazy"></div>
-          <div class="product-info">
-            <p class="product-subtitle">船师｜舒展香</p>
-            <h3 class="product-name">陈韵典藏款</h3>
-            <p class="product-desc">层次展开自然，越闻越顺</p>
-            <div class="product-actions">
-              <span class="product-price">¥128</span>
-              <button class="btn btn-sm btn-outline" data-action="view" data-id="boat-series">查看详情</button>
-              <button class="btn btn-sm" data-action="cart" data-id="boat-series">加入购物车</button>
-            </div>
-          </div>
-        </div>
-        <div class="product-card">
-          <div class="product-img-wrap"><img src="/assets/images/products/mutong.png" alt="牧童｜清逸香" loading="lazy"></div>
-          <div class="product-info">
-            <p class="product-subtitle">牧童｜清逸香</p>
-            <h3 class="product-name">臻品老料款</h3>
-            <p class="product-desc">高年份老料，清透纯净</p>
-            <div class="product-actions">
-              <span class="product-price">¥188</span>
-              <button class="btn btn-sm btn-outline" data-action="view" data-id="mutong-series">查看详情</button>
-              <button class="btn btn-sm" data-action="cart" data-id="mutong-series">加入购物车</button>
-            </div>
-          </div>
-        </div>
+      <div class="products-grid" id="products-grid">
+        <!-- JS rendered -->
       </div>
-      </div>
-
     </div>
   </section>
 
@@ -288,13 +252,13 @@
   <section class="reviews-section" id="reviews">
     <div class="container">
       <div class="section-header">
-        <span class="section-label">用户心声</span>
-        <h2 class="section-title">他们这样说</h2>
+        <span class="section-label" data-i18n="reviews_label">用户心声</span>
+        <h2 class="section-title" data-i18n="reviews_title">他们这样说</h2>
       </div>
       <div class="reviews-grid">
         <div class="review-card">
           <div class="review-stars">★★★★★</div>
-          <p class="review-text">"每天睡前点一支沉香，感觉整个人都安静下来了。香气不浓不淡，燃完也没有刺鼻感，真正的好香。"</p>
+          <p class="review-text" data-i18n="review_1">"每天睡前点一支沉香，感觉整个人都安静下来了。香气不浓不淡，燃完也没有刺鼻感，真正的好香。"</p>
           <div class="review-author">
             <span class="author-name">周 · 深圳</span>
             <span class="review-product">宽树·沉香线香</span>
@@ -302,7 +266,7 @@
         </div>
         <div class="review-card featured">
           <div class="review-stars">★★★★★</div>
-          <p class="review-text">"盘香的形态很美，放在书桌上既是摆件又是香品。檀香气息非常真实，没有那种劣质香的刺激感，连续买了三次了。"</p>
+          <p class="review-text" data-i18n="review_2">"盘香的形态很美，放在书桌上既是摆件又是香品。檀香气息非常真实，没有那种劣质香的刺激感，连续买了三次了。"</p>
           <div class="review-author">
             <span class="author-name">林 · 杭州</span>
             <span class="review-product">宽树·檀香盘香</span>
@@ -310,7 +274,7 @@
         </div>
         <div class="review-card">
           <div class="review-stars">★★★★★</div>
-          <p class="review-text">"新搬家用了艾草净化香，很喜欢那种清新温暖的草本气息。包装也很用心，整体感受非常好。"</p>
+          <p class="review-text" data-i18n="review_3">"新搬家用了艾草净化香，很喜欢那种清新温暖的草本气息。包装也很用心，整体感受非常好。"</p>
           <div class="review-author">
             <span class="author-name">陈 · 成都</span>
             <span class="review-product">宽树·艾草净化香</span>
@@ -318,7 +282,7 @@
         </div>
         <div class="review-card">
           <div class="review-stars">★★★★★</div>
-          <p class="review-text">"送给长辈的礼物，包装精致有质感。老人家说这个香气跟以前寺庙里的不一样，更柔和更干净，很喜欢。"</p>
+          <p class="review-text" data-i18n="review_4">"送给长辈的礼物，包装精致有质感。老人家说这个香气跟以前寺庙里的不一样，更柔和更干净，很喜欢。"</p>
           <div class="review-author">
             <span class="author-name">王 · 北京</span>
             <span class="review-product">宽树·沉香线香</span>
@@ -326,7 +290,7 @@
         </div>
         <div class="review-card">
           <div class="review-stars">★★★★★</div>
-          <p class="review-text">"朋友推荐的，一开始觉得价格不便宜，收到后点燃才知道什么叫物有所值。香灰落得很整齐，余香持久。"</p>
+          <p class="review-text" data-i18n="review_5">"朋友推荐的，一开始觉得价格不便宜，收到后点燃才知道什么叫物有所值。香灰落得很整齐，余香持久。"</p>
           <div class="review-author">
             <span class="author-name">张 · 上海</span>
             <span class="review-product">宽树·檀香盘香</span>
@@ -334,7 +298,7 @@
         </div>
         <div class="review-card">
           <div class="review-stars">★★★★★</div>
-          <p class="review-text">"作为瑜伽冥想用香，艾草款的气息让人很放松，不像有些香太冲。燃一支足够一整个冥想时段。"</p>
+          <p class="review-text" data-i18n="review_6">"作为瑜伽冥想用香，艾草款的气息让人很放松，不像有些香太冲。燃一支足够一整个冥想时段。"</p>
           <div class="review-author">
             <span class="author-name">李 · 广州</span>
             <span class="review-product">宽树·艾草净化香</span>
@@ -348,10 +312,10 @@
   <!-- ─── 底部收口 ─── -->
   <section class="cta-section">
     <div class="container">
-      <h2 class="cta-title-main">香的差别，不在复杂</h2>
-      <h2 class="cta-title-accent">在时间</h2>
-      <p class="cta-desc">从基础耐用，到层次展开，再到高年份老料<br/>你闻到的，是时间留下来的东西</p>
-      <a href="#products" class="btn btn-primary btn-lg">立即选购</a>
+      <h2 class="cta-title-main" data-i18n="cta_title_1">香的差别，不在复杂</h2>
+      <h2 class="cta-title-accent" data-i18n="cta_title_2">在时间</h2>
+      <p class="cta-desc" data-i18n="cta_desc">从基础耐用，到层次展开，再到高年份老料<br/>你闻到的，是时间留下来的东西</p>
+      <a href="#products" class="btn btn-primary btn-lg" data-i18n="cta_btn">立即选购</a>
     </div>
   </section>
 
@@ -363,23 +327,23 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <img src="/assets/images/logo-white.png" alt="宽树" class="footer-logo" />
-        <p>宽树香品，自然香道。<br/>让每一次呼吸都有意义。</p>
+        <p data-i18n="footer_tagline">宽树香品，自然香道。<br/>让每一次呼吸都有意义。</p>
       </div>
       <div class="footer-links">
-        <h5>快速导航</h5>
-        <a href="#products">香品系列</a>
-        <a href="#about">关于宽树</a>
-        <a href="#craft">制香工艺</a>
+        <h5 data-i18n="footer_nav">快速导航</h5>
+        <a href="#products" data-i18n="nav_products">香品系列</a>
+        <a href="#about" data-i18n="about_label">关于宽树</a>
+        <a href="#craft" data-i18n="nav_craft">制香工艺</a>
       </div>
       <div class="footer-links">
-        <h5>客户服务</h5>
-        <a href="#" onclick="showAuthModal()">登录 / 注册</a>
-        <a href="#" onclick="alert('请联系微信客服：kuanshu2024')">联系客服</a>
-        <a href="#">配送说明</a>
+        <h5 data-i18n="footer_service">客户服务</h5>
+        <a href="#" onclick="showAuthModal()" data-i18n="nav_login">登录 / 注册</a>
+        <a href="#" onclick="alert(I18N[currentLang].footer_contact_alert)" data-i18n="footer_contact">联系客服</a>
+        <a href="#" data-i18n="footer_shipping">配送说明</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2024 宽树香品. 保留所有权利.</p>
+      <p data-i18n="footer_copyright">© 2024 宽树香品. 保留所有权利.</p>
     </div>
   </div>
 </footer>
@@ -391,98 +355,99 @@
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
     <div class="auth-tabs">
-      <button class="auth-tab active" id="login-tab" onclick="switchAuthTab('login')">登录</button>
-      <button class="auth-tab" id="register-tab" onclick="switchAuthTab('register')">注册</button>
+      <button class="auth-tab active" id="login-tab" onclick="switchAuthTab('login')" data-i18n="auth_tab_login">登录</button>
+      <button class="auth-tab" id="register-tab" onclick="switchAuthTab('register')" data-i18n="auth_tab_register">注册</button>
     </div>
 
     <!-- 登录表单 -->
     <form id="login-form" onsubmit="handleLogin(event)">
       <div class="form-group">
-        <label>邮箱</label>
-        <input type="email" id="login-email" placeholder="your@email.com" required />
+        <label data-i18n="auth_label_email">邮箱</label>
+        <input type="email" id="login-email" placeholder="your@email.com" data-i18n-ph="auth_ph_email" required />
       </div>
       <div class="form-group">
-        <label>密码</label>
-        <input type="password" id="login-password" placeholder="请输入密码" required />
+        <label data-i18n="auth_label_password">密码</label>
+        <input type="password" id="login-password" placeholder="请输入密码" data-i18n-ph="auth_ph_password_login" required />
       </div>
       <div class="form-error" id="login-error" style="display:none"></div>
-      <button type="submit" class="btn btn-primary full-width" id="login-submit">登录</button>
-      <p class="form-hint">没有账号？<a href="#" onclick="switchAuthTab('register')">立即注册</a></p>
+      <button type="submit" class="btn btn-primary full-width" id="login-submit" data-i18n="auth_tab_login">登录</button>
+      <p class="form-hint"><span data-i18n="auth_no_account">没有账号？</span><a href="#" onclick="switchAuthTab('register')" data-i18n="auth_go_register">立即注册</a></p>
     </form>
 
     <!-- 注册表单 -->
     <form id="register-form" style="display:none" onsubmit="handleRegister(event)">
       <div class="form-group">
-        <label>姓名</label>
-        <input type="text" id="reg-name" placeholder="您的称呼" required />
+        <label data-i18n="auth_label_name">姓名</label>
+        <input type="text" id="reg-name" placeholder="您的称呼" data-i18n-ph="auth_ph_name" required />
       </div>
       <div class="form-group">
-        <label>邮箱</label>
-        <input type="email" id="reg-email" placeholder="your@email.com" required />
+        <label data-i18n="auth_label_email">邮箱</label>
+        <input type="email" id="reg-email" placeholder="your@email.com" data-i18n-ph="auth_ph_email" required />
       </div>
       <div class="form-group">
-        <label>手机号 <span class="optional">（选填）</span></label>
-        <input type="tel" id="reg-phone" placeholder="1xx xxxx xxxx" />
+        <label><span data-i18n="auth_label_phone">手机号</span> <span class="optional" data-i18n="auth_optional">（选填）</span></label>
+        <input type="tel" id="reg-phone" placeholder="1xx xxxx xxxx" data-i18n-ph="auth_ph_phone" />
       </div>
       <div class="form-group">
-        <label>密码</label>
-        <input type="password" id="reg-password" placeholder="至少8位" required minlength="8" />
+        <label data-i18n="auth_label_password">密码</label>
+        <input type="password" id="reg-password" placeholder="至少8位" data-i18n-ph="auth_ph_password_reg" required minlength="8" />
       </div>
       <div class="form-error" id="register-error" style="display:none"></div>
-      <button type="submit" class="btn btn-primary full-width" id="register-submit">注册</button>
-      <p class="form-hint">已有账号？<a href="#" onclick="switchAuthTab('login')">立即登录</a></p>
+      <button type="submit" class="btn btn-primary full-width" id="register-submit" data-i18n="auth_tab_register">注册</button>
+      <p class="form-hint"><span data-i18n="auth_has_account">已有账号？</span><a href="#" onclick="switchAuthTab('login')" data-i18n="auth_go_login">立即登录</a></p>
     </form>
   </div>
 </div>
 
 <!-- ═══════════════ 弹窗：产品详情 ═══════════════ -->
 <div class="modal-overlay" id="product-modal">    <div class="modal-body" id="product-modal-body">      <!-- JS动态填充 -->    </div>  </div>
+
 <!-- ═══════════════ 弹窗：结算 ═══════════════ -->
 <div class="modal-overlay" id="checkout-modal" style="display:none">
   <div class="modal checkout-modal">
     <button class="modal-close" onclick="closeCheckout()">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
-    <h3 class="modal-title">确认订单</h3>
+    <h3 class="modal-title" data-i18n="checkout_title">确认订单</h3>
     <div class="checkout-items" id="checkout-items"></div>
     <form onsubmit="submitOrder(event)">
       <div class="checkout-form-section">
-        <h4>收货信息</h4>
+        <h4 data-i18n="checkout_section">收货信息</h4>
         <div class="form-row">
           <div class="form-group">
-            <label>收件人</label>
-            <input type="text" id="co-name" placeholder="姓名" required />
+            <label data-i18n="checkout_label_name">收件人</label>
+            <input type="text" id="co-name" placeholder="姓名" data-i18n-ph="checkout_ph_name" required />
           </div>
           <div class="form-group">
-            <label>联系电话</label>
-            <input type="tel" id="co-phone" placeholder="手机号" required />
+            <label data-i18n="checkout_label_phone">联系电话</label>
+            <input type="tel" id="co-phone" placeholder="手机号" data-i18n-ph="checkout_ph_phone" required />
           </div>
         </div>
         <div class="form-group">
-          <label>收货地址</label>
-          <input type="text" id="co-address" placeholder="省/市/区 + 详细地址" required />
+          <label data-i18n="checkout_label_address">收货地址</label>
+          <input type="text" id="co-address" placeholder="省/市/区 + 详细地址" data-i18n-ph="checkout_ph_address" required />
         </div>
         <div class="form-group">
-          <label>备注 <span class="optional">（选填）</span></label>
-          <textarea id="co-remark" placeholder="特殊要求或留言" rows="2"></textarea>
+          <label><span data-i18n="checkout_label_remark">备注</span> <span class="optional" data-i18n="auth_optional">（选填）</span></label>
+          <textarea id="co-remark" placeholder="特殊要求或留言" data-i18n-ph="checkout_ph_remark" rows="2"></textarea>
         </div>
       </div>
       <div class="checkout-summary">
         <div class="summary-row">
-          <span>商品合计</span>
+          <span data-i18n="checkout_subtotal">商品合计</span>
           <span id="co-subtotal">¥0</span>
         </div>
         <div class="summary-row">
-          <span>运费</span>
-          <span class="free">免费</span>
+          <span data-i18n="checkout_shipping">运费</span>
+          <span class="free" data-i18n="checkout_shipping_free">免费</span>
         </div>
         <div class="summary-row total-row">
-          <span>应付总额</span>
+          <span data-i18n="checkout_total">应付总额</span>
           <span id="co-total">¥0</span>
         </div>
       </div>
       <div class="form-error" id="checkout-error" style="display:none"></div>
-      <button type="submit" class="btn btn-primary full-width" id="checkout-submit">提交订单</button>
+      <button type="submit" class="btn btn-primary full-width" id="checkout-submit" data-i18n="checkout_submit">提交订单</button>
     </form>
   </div>
 </div>
@@ -496,33 +461,33 @@
     <div class="user-header">
       <div class="user-avatar" id="user-avatar-initial">U</div>
       <div>
-        <p class="user-greeting" id="user-greeting">你好</p>
+        <p class="user-greeting" id="user-greeting" data-i18n="user_hello">你好</p>
         <p class="user-email" id="user-email-display"></p>
       </div>
     </div>
     <div class="user-tabs">
-      <button class="user-tab active" id="profile-tab" onclick="switchUserTab('profile')">我的资料</button>
-      <button class="user-tab" id="orders-tab" onclick="switchUserTab('orders')">我的订单</button>
+      <button class="user-tab active" id="profile-tab" onclick="switchUserTab('profile')" data-i18n="user_tab_profile">我的资料</button>
+      <button class="user-tab" id="orders-tab" onclick="switchUserTab('orders')" data-i18n="user_tab_orders">我的订单</button>
     </div>
     <!-- 资料面板 -->
     <div id="profile-panel">
       <form onsubmit="updateProfile(event)">
         <div class="form-group">
-          <label>姓名</label>
+          <label data-i18n="auth_label_name">姓名</label>
           <input type="text" id="profile-name" />
         </div>
         <div class="form-group">
-          <label>手机号</label>
+          <label data-i18n="auth_label_phone">手机号</label>
           <input type="tel" id="profile-phone" />
         </div>
-        <button type="submit" class="btn btn-primary full-width mt-12">保存修改</button>
+        <button type="submit" class="btn btn-primary full-width mt-12" data-i18n="user_save">保存修改</button>
       </form>
-      <button class="btn btn-ghost full-width mt-8" onclick="logout()">退出登录</button>
+      <button class="btn btn-ghost full-width mt-8" onclick="logout()" data-i18n="user_logout">退出登录</button>
     </div>
     <!-- 订单面板 -->
     <div id="orders-panel" style="display:none">
       <div class="orders-list" id="orders-list">
-        <div class="loading-text">加载中...</div>
+        <div class="loading-text" data-i18n="user_loading">加载中...</div>
       </div>
     </div>
   </div>
@@ -537,16 +502,17 @@
     <div class="success-icon">
       <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
     </div>
-    <h2>订单提交成功</h2>
-    <p>感谢您选择宽树香品</p>
+    <h2 data-i18n="order_success_title">订单提交成功</h2>
+    <p data-i18n="order_success_body">感谢您选择宽树香品</p>
     <p class="order-no-display" id="order-no-display"></p>
-    <p class="success-note">我们将在1-2个工作日内安排发货，顺丰配送。<br/>如有疑问请联系客服微信：kuanshu2024</p>
-    <button class="btn btn-primary" onclick="closeOrderSuccess()">继续购物</button>
-    <button class="btn btn-ghost mt-8" onclick="closeOrderSuccess(); openUserModal()">查看订单</button>
+    <p class="success-note" data-i18n="order_success_note">我们将在1-2个工作日内安排发货，顺丰配送。<br/>如有疑问请联系客服微信：kuanshu2024</p>
+    <button class="btn btn-primary" onclick="closeOrderSuccess()" data-i18n="order_success_continue">继续购物</button>
+    <button class="btn btn-ghost mt-8" onclick="closeOrderSuccess(); openUserModal()" data-i18n="order_success_view">查看订单</button>
   </div>
 </div>
 
+<script src="/js/i18n.js"></script>
 <script src="/js/main.js?v=4"></script>
-    
+
 </body>
 </html>
